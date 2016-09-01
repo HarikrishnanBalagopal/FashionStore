@@ -56,6 +56,17 @@ ul li {
 #searchButton {
 	background-color: #47bac1;
 }
+
+.navbar-default {
+    background-color: #ffffff;
+    margin-bottom: 0;
+    border: none;
+}
+
+.navbar-brand img
+{
+	width:40px;
+}
 </style>
 </head>
 <body>
@@ -104,7 +115,7 @@ ul li {
 					class="icon-bar"></span>
 			</button>
 			<a class="navbar-brand" href="javascript:void(0)"><img
-				src="img/logo.png" alt=""></a>
+				src="resources/images/logo.png" alt=""></a>
 		</div>
 
 		<div class="collapse navbar-collapse navbar-ex1-collapse">
