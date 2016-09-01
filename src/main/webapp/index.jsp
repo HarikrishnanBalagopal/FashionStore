@@ -1,4 +1,4 @@
-<%@ include file="Common-Header.jsp"%>
+<%@ include file="WEB-INF/views/Common-Header.jsp"%>
 <!-- Carousel
     ================================================== -->
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -49,4 +49,4 @@
         <span class="sr-only">Next</span>
       </a>
     </div><!-- /.carousel -->
-<%@ include file="Common-Footer.jsp"%>
+<%@ include file="WEB-INF/views/Common-Footer.jsp"%>
