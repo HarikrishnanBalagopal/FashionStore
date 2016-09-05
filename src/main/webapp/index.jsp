@@ -49,4 +49,8 @@
         <span class="sr-only">Next</span>
       </a>
     </div><!-- /.carousel -->
+<script type="text/javascript">
+	var elem = document.getElementById("LinkHome");
+	elem.className += " active";
+</script>
 <%@ include file="WEB-INF/views/Common-Footer.jsp"%>
