@@ -10,64 +10,7 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
 	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
 	crossorigin="anonymous">
-<style>
-* {
-	margin: 0;
-	padding: 0;
-	outline: 0;
-}
-
-.topBar {
-	min-height: 40px;
-	height: auto;
-	background: #252525;
-	color: #a7a7a7;
-}
-
-i {
-	margin-top: 10px;
-}
-
-ul li {
-	list-style-type: none;
-}
-
-.topBar ul li a {
-	color: #ffffff;
-	transition: all 0.3s ease-in-out;
-}
-
-.topBar ul li a:hover, .topBar ul li a:focus {
-	opacity: 40%;
-}
-
-.topBar ul.pull-right li:nth-child(2) .dropdown-menu {
-	width: 350px;
-	margin: 0;
-	padding: 10px 15px;
-	border-radius: 0;
-}
-
-#searchBox {
-	box-shadow: none;
-	border-radius: 0;
-}
-
-#searchButton {
-	background-color: #47bac1;
-}
-
-.navbar-default {
-    background-color: #ffffff;
-    margin-bottom: 0;
-    border: none;
-}
-
-.navbar-brand img
-{
-	width:40px;
-}
-</style>
+<link rel="stylesheet" type="text/css" href="resources/css/style.css">
 </head>
 <body>
 
@@ -114,8 +57,8 @@ ul li {
 					class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="javascript:void(0)"><img
-				src="resources/images/logo.png" alt=""></a>
+			<a class="navbar-brand" href="javascript:void(0)">
+			<img src="resources/images/logo.png" alt=""></a>
 		</div>
 
 		<div class="collapse navbar-collapse navbar-ex1-collapse">
