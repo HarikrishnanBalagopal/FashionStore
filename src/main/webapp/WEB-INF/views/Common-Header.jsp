@@ -14,38 +14,78 @@
 </head>
 <body>
 
-	<div class="topBar">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-6 hidden-sm hidden-xs">
-					<ul class="list-inline">
-						<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-						<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-						<li><a href="#"><i class="fa fa-google-plus-official"></i></a></li>
-						<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-					</ul>
-				</div>
-				<div class="col-md-6 col-xs-12">
-					<ul class="list-inline pull-right">
-						<li><span><a data-toggle="modal" href='#'>Log in </a><small>
-									or </small><a data-toggle="modal" href='#'> Create an account</a></span></li>
-						<li class="dropdown searchBox"><a href="javascript:void(0)"
-							class="dropdown-toggle" data-toggle="dropdown"><i
-								class="fa fa-search"></i></a>
-							<ul class="dropdown-menu dropdown-menu-right">
-								<li><span class="input-group"> <input id="searchBox"
-										type="text" class="form-control" placeholder="Search..."
-										aria-describedby="basic-addon2"> <span
-										id="searchButton" class="input-group-addon" id="basic-addon2">Search</span>
-								</span></li>
-							</ul></li>
-						<li><a href="#"><i class="fa fa-shopping-cart"></i></a>
-					</ul>
+	<!-- HEADER -->
+	<div class="header clearfix">
+
+		<!-- TOPBAR -->
+		<div class="topBar">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-6 hidden-sm hidden-xs">
+						<ul class="list-inline">
+							<li><a href="#"><i class="fa fa-twitter hicon"></i></a></li>
+							<li><a href="#"><i class="fa fa-facebook hicon"></i></a></li>
+							<li><a href="#"><i class="fa fa-dribbble hicon"></i></a></li>
+							<li><a href="#"><i class="fa fa-vimeo hicon"></i></a></li>
+							<li><a href="#"><i class="fa fa-tumblr hicon"></i></a></li>
+						</ul>
+					</div>
+					<div class="col-md-6 col-xs-12">
+						<ul class="list-inline pull-right">
+							<li><span><a data-toggle="modal" href='#login'>Log
+										in</a><small>or</small><a data-toggle="modal" href='#signup'>Create
+										an account</a></span></li>
+							<li class="dropdown searchBox"><a href="#"
+								class="dropdown-toggle" data-toggle="dropdown"><i
+									class="fa fa-search hicon"></i></a>
+								<ul class="dropdown-menu dropdown-menu-right">
+									<li><span class="input-group"> <input type="text"
+											class="form-control" placeholder="Search..."
+											aria-describedby="basic-addon2"> <span
+											class="input-group-addon" id="basic-addon2">Search</span>
+									</span></li>
+								</ul></li>
+							<li class="dropdown"><a href="#" class="dropdown-toggle"
+								data-toggle="dropdown"><i class="fa fa-shopping-cart hicon"></i>$0</a>
+								<ul class="dropdown-menu dropdown-menu-right">
+									<li>Item(s) in your cart</li>
+									<li><a href="#">
+											<div class="media">
+												<img class="media-left media-object"
+													src="img/home/cart-items/cart-item-01.jpg" alt="cart-Image">
+												<div class="media-body">
+													<h5 class="media-heading">
+														INCIDIDUNT UT <br>
+														<span>2 X $199</span>
+													</h5>
+												</div>
+											</div>
+									</a></li>
+									<li><a href="#">
+											<div class="media">
+												<img class="media-left media-object"
+													src="img/home/cart-items/cart-item-01.jpg" alt="cart-Image">
+												<div class="media-body">
+													<h5 class="media-heading">
+														INCIDIDUNT UT <br>
+														<span>2 X $199</span>
+													</h5>
+												</div>
+											</div>
+									</a></li>
+									<li>
+										<div class="btn-group" role="group" aria-label="...">
+											<button type="button" class="btn btn-default">Shopping
+												Cart</button>
+											<button type="button" class="btn btn-default">Checkout</button>
+										</div>
+									</li>
+								</ul></li>
+						</ul>
+					</div>
 				</div>
 			</div>
-
 		</div>
-	</div>
 	</div>
 
 	<nav class="navbar navbar-main navbar-default" role="navigation">
@@ -58,7 +98,8 @@
 					class="icon-bar"></span>
 			</button>
 			<a class="navbar-brand" href="javascript:void(0)"> <img
-				src="resources/images/logo.png" alt=""><span class="company-name">B<small>IG</small> B<small>AG</small></span></a>
+				src="resources/images/logo.png" alt=""><span
+				class="company-name">B<small>IG</small> B<small>AG</small></span></a>
 		</div>
 
 		<div class="collapse navbar-collapse navbar-ex1-collapse">
