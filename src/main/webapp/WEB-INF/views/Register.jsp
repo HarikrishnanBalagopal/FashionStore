@@ -30,21 +30,30 @@
                 <div class="panel-body">
                   <form action="" method="POST" role="form">
                     <div class="form-group">
-                      <label for="">First Name</label>
-                      <input type="text" class="form-control" name="firstName" id="">
+                      <label for="">First Name *</label>
+                      <input type="text" class="form-control" name="firstName" autofocus="autofocus" required="required">
                     </div>
                     <div class="form-group">
-                      <label for="">Last Name</label>
-                      <input type="text" class="form-control" name="lastName" id="">
+                      <label for="">Last Name *</label>
+                      <input type="text" class="form-control" name="lastName" required="required">
                     </div>
                     <div class="form-group">
-                      <label for="">Enter Email</label>
-                      <input type="email" class="form-control" name="email" id="">
+                      <label for="">Shipping Address *</label>
+                      <input type="text" class="form-control" name="address" required="required">
                     </div>
                     <div class="form-group">
-                      <label for="">Password</label>
-                      <input type="password" class="form-control" name="password" id="">
+                      <label for="">Phone Number *</label>
+                      <input type="text" class="form-control" name="phoneNumber" required="required">
                     </div>
+                    <div class="form-group">
+                      <label for="">Enter Email *</label>
+                      <input type="email" class="form-control" name="email" required="required">
+                    </div>
+                    <div class="form-group">
+                      <label for="">Password *</label>
+                      <input type="password" class="form-control" name="password" required="required">
+                    </div>
+                    * <small>Required Fields</small>
                     <button type="submit" class="btn btn-primary btn-block">Submit</button>
                     <button type="button" class="btn btn-link btn-block"><span>Already have an account?</span> Log in</button>
                   </form>
@@ -54,5 +63,8 @@
           </div>
         </div>
       </section>
-
+<script type="text/javascript">
+	var elem = document.getElementById("LinkRegister");
+	elem.className += " active";
+</script>
 <%@ include file="Common-Footer.jsp"%>

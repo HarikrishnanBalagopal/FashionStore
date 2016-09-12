@@ -25,5 +25,8 @@
 	<li>Email:test@server.com</li>
 </ul>
 <hr />
-
+<script type="text/javascript">
+	var elem = document.getElementById("LinkContactUs");
+	elem.className += " active";
+</script>
 <%@ include file="Common-Footer.jsp"%>

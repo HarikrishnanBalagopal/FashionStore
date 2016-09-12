@@ -111,5 +111,8 @@
           </div>
         </div>
       </section>
-
+<script type="text/javascript">
+	var elem = document.getElementById("LinkAboutUs");
+	elem.className += " active";
+</script>
 <%@ include file="Common-Footer.jsp"%>

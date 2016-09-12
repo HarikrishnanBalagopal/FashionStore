@@ -1993,6 +1993,7 @@ body.bodyColor.container {
     border: none;
     height: 50px;
     box-shadow: none;
+    text-align: center;
 }
 
 .form-field .form-group .form-control:focus,
@@ -2077,7 +2078,8 @@ body.bodyColor.container {
     text-transform: uppercase;
     font-size: 15px;
     font-weight: 700;
-    padding: 0;
+    padding: 0 10px;
+    margin-bottom: 10px;
     height: 50px;
     line-height: 50px;
     -webkit-transition: all 0.3s ease-in-out;
@@ -2163,6 +2165,7 @@ body.bodyColor.container {
 .logIn .panel .panel-body {
     border: 5px solid #f0f0f0;
     border-top: none;
+    text-align: center;
 }
 
 .form-body .panel .panel-body .btn-link span,
@@ -5725,4 +5728,18 @@ body.bodyColor.container {
     .count-down #simple_timer .table-cell .tab-metr {
         font-size: 15px;
     }
+}
+
+#addProduct
+{
+	    background: url("/FashionStore/resources/images/admin-home/add-product-bg.jpg") center no-repeat;
+}
+
+#addUser
+{
+	    background: url("/FashionStore/resources/images/admin-home/add-user-bg.png") center no-repeat;
+}
+#addSupplier
+{
+	    background: url("/FashionStore/resources/images/admin-home/add-supplier-bg.jpg") center no-repeat;
 }
