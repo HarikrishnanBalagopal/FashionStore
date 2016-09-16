@@ -47,15 +47,20 @@ public class UserDAOImpl implements UserDAO
 	}
 
 	@Transactional
-	public void delete(String id)
+	public void delete(Integer id)
 	{
 		User user = new User();
+		UserDetails userDetails = new UserDetails();
+		
 		user.setId(id);
+		userDetails.setId(id);
+		
 		sessionFactory.getCurrentSession().delete(user);
+		sessionFactory.getCurrentSession().delete(userDetails);
 	}
 
 	@Transactional
-	public User get(String id)
+	public User get(Integer id)
 	{
 		String hql = "from User where id=" + id;
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
@@ -86,5 +91,23 @@ public class UserDAOImpl implements UserDAO
 		}
 
 		return false;
+	}
+
+	@Transactional
+	public boolean validateRegistration(UserDetails userDetails)
+	{
+		if(userDetails.getEmail() == null)
+			return false;
+		
+		String hql = "from User where email = '" + userDetails.getEmail() + "'";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+
+		@SuppressWarnings("unchecked")
+		List<User> list = (List<User>) query.list();
+
+		if (list != null && !list.isEmpty())
+			return false;
+		
+		return true;
 	}
 }

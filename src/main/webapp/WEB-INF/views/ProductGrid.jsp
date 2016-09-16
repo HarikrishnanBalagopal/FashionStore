@@ -10,7 +10,7 @@
 			</div>
 			<div class="col-xs-6">
 				<ol class="breadcrumb pull-right">
-					<li><a href="index.html">Home</a></li>
+					<li><a href="Home">Home</a></li>
 					<li class="active">Product Grid</li>
 				</ol>
 			</div>
