@@ -24,11 +24,33 @@ public class ProductDAOImpl implements ProductDAO
 	}
 
 	@Transactional
-	public List<Product> list()
+	public List<Product> list(int sortOrder)
 	{
+		String sort = "name";
+		
+		switch(sortOrder)
+		{
+			case 0:
+			case 1:
+			case 2:
+			case 3:
+				sort = "name";
+				break;
+				
+			case 4:
+				sort = "price";
+				break;
+			
+			default:
+				sort = "name";
+		}
+		
+		String hql = "from Product order by " + sort;
+		System.out.println(hql);
+		
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		@SuppressWarnings("unchecked")
-		List<Product> listProduct = (List<Product>) sessionFactory.getCurrentSession().createCriteria(Product.class)
-				.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
+		List<Product> listProduct = (List<Product>) query.list();
 
 		return listProduct;
 	}

@@ -17,6 +17,7 @@ public class DefaultController
 	{
 		return "AboutUs";
 	}
+	
 	@RequestMapping("/ContactUs")
 	public String contactUs()
 	{

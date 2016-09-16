@@ -24,26 +24,33 @@
 	<div class="container">
 		<div class="row">
 			<div
-				class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-12">
+				class="col-md-10 col-md-offset-1 col-sm-8 col-sm-offset-2 col-xs-12">
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<h3>product details</h3>
 					</div>
 					<div class="panel-body">
-						<form:form action="AddProductAttempt" method="POST" modelAttribute="product" role="form">
+						<form:form action="AddProductAttempt" method="POST"
+							modelAttribute="product" role="form">
 							<div class="form-group">
 								<form:label path="name">Product Name</form:label>
-								<form:input path="name" type="text" class="form-control" required/>
+								<form:input path="name" type="text" class="form-control"
+									required="required" />
 							</div>
+							<form:radiobuttons path="categoryID" items="${categoryList}"  />
 							<div class="form-group">
 								<form:label path="description">Description</form:label>
-								<form:input path="description" type="text" class="form-control" required/>
+								<form:textarea rows="20" cols="40" path="description" class="form-control"
+									required="required" />
 							</div>
 							<div class="form-group">
 								<form:label path="price">Price</form:label>
-								<form:input path="price" type="text" class="form-control" required/>
+								<form:input path="price" type="text" class="form-control"
+									required="" />
 							</div>
-							<input type="submit" value="Add Product" class="btn btn-primary btn-block"/>
+							<form:select path="supplierID" items="${supplierList}" />
+							<input type="submit" value="Add Product"
+								class="btn btn-primary btn-block" />
 						</form:form>
 					</div>
 				</div>

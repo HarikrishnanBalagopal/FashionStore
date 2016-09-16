@@ -12,8 +12,7 @@
 			<div class="col-xs-6">
 				<ol class="breadcrumb pull-right">
 					<li><a href="index.html">Home</a></li>
-					<li><a href="#">shop</a></li>
-					<li class="active">Product List Left Sidebar</li>
+					<li class="active">Product List</li>
 				</ol>
 			</div>
 		</div>
@@ -141,12 +140,12 @@
 			<div class="col-md-9 col-sm-8 col-xs-12">
 				<div class="row filterArea">
 					<div class="col-xs-6">
-						<select name="guiest_id1" id="guiest_id1" class="select-drop">
+						<select name="sortOrder" id="sortOrder" class="select-drop">
 							<option value="0">Default sorting</option>
 							<option value="1">Sort by popularity</option>
 							<option value="2">Sort by rating</option>
 							<option value="3">Sort by newness</option>
-							<option value="3">Sort by price</option>
+							<option value="4">Sort by price</option>
 						</select>
 					</div>
 					<div class="col-xs-6">
@@ -178,8 +177,7 @@
 										<a href="single-product">${product.name}</a>
 									</h4>
 									<p>${product.description}</p>
-									<h3>
-										$${product.price}</h3>
+									<h3>$${product.price}</h3>
 									<div class="btn-group" role="group">
 										<button type="button" class="btn btn-default"
 											data-toggle="modal" data-target=".login-modal">
@@ -193,12 +191,18 @@
 								</div>
 							</div>
 						</div>
-						</c:forEach>
-					
+					</c:forEach>
+
 				</div>
 			</div>
 		</div>
 	</div>
 </section>
-
+<script>
+	var e = document.querySelector("#sortOrder");
+	e.value = ${sortOrder};
+	e.addEventListener("change", function() {
+		window.location.href = "/FashionStore/ProductList?sort=" + this.value;
+	});
+</script>
 <%@ include file="Common-Footer.jsp"%>

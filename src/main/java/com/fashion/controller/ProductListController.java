@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.fashion.dao.ProductDAO;
 import com.fashion.dao.impl.ProductDAOImpl;
@@ -19,19 +20,14 @@ public class ProductListController
 	ProductDAO productDAO;
 
 	@RequestMapping("/ProductList")
-	String productList(ModelMap model)
+	String productList(@RequestParam(value = "sort", required = false) Integer sort, ModelMap model)
 	{
-		Product p = new Product();
-		p.setId("P0");
-		p.setCategoryID("C0");
-		p.setName("Cool");
-		p.setPrice(800);
-		p.setSupplierID("S0");
-		p.setDescription("Nice test");
-		List<Product> list = new ArrayList<Product>();
-		list.add(p);
-		//List<Product> productList = productDAO.list();
-		model.addAttribute("productList", list);
+		int s = 0;
+		if(sort != null)
+			s = sort;
+		List<Product> productList = productDAO.list(s);
+		model.addAttribute("productList", productList);
+		model.addAttribute("sortOrder", s);
 		return "ProductList";
 	}
 }

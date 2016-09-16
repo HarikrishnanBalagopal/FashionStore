@@ -6,7 +6,7 @@ import com.fashion.model.Product;
 
 public interface ProductDAO
 {
-	public List<Product> list();
+	public List<Product> list(int sortOrder);
 
 	public Product get(String id);
 

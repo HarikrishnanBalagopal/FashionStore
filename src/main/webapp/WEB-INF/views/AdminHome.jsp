@@ -27,7 +27,7 @@
 					</div>
 					<div id="addProduct" class="panel-body">
 						<div class="btn-group-vertical">
-							<button type="button" class="btn btn-primary">Add
+							<button type="button" class="btn btn-primary" onclick="window.location.href='AddProduct'">Add
 								Product</button>
 							<button type="button" class="btn btn-primary">View and
 								Update Products</button>
