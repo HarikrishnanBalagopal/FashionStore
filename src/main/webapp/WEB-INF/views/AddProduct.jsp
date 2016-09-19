@@ -31,7 +31,7 @@
 					</div>
 					<div class="panel-body">
 						<form:form action="AddProductAttempt" method="POST"
-							modelAttribute="product" role="form">
+							modelAttribute="product" enctype="multipart/form-data" role="form">
 							<div class="form-group">
 								<form:label path="name">Product Name</form:label>
 								<form:input path="name" type="text" class="form-control"
@@ -49,6 +49,10 @@
 									required="" />
 							</div>
 							<form:select path="supplierID" items="${supplierList}" />
+							
+							<form:label path="image">Image</form:label>
+							<form:input type="file" path="image" />
+							
 							<input type="submit" value="Add Product"
 								class="btn btn-primary btn-block" />
 						</form:form>

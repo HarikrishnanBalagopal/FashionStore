@@ -62,7 +62,7 @@ public class ProductDAOImpl implements ProductDAO
 	}
 
 	@Transactional
-	public void delete(String id)
+	public void delete(Integer id)
 	{
 		Product ProductToDelete = new Product();
 		ProductToDelete.setId(id);
@@ -70,9 +70,9 @@ public class ProductDAOImpl implements ProductDAO
 	}
 
 	@Transactional
-	public Product get(String id)
+	public Product get(Integer id)
 	{
-		String hql = "from product where id='" + id + "'";
+		String hql = "from product where id=" + id;
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 
 		@SuppressWarnings("unchecked")

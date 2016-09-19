@@ -167,7 +167,7 @@
 						<div class="col-xs-12">
 							<div class="media">
 								<div class="media-left">
-									<img class="media-object" src="resources/images/products/${product.name}.jpg"
+									<img class="media-object" src="img/products/products-01.jpg"
 										alt="Image"> <span class="maskingImage"><a
 										data-toggle="modal" href=".quick-view" class="btn viewBtn">Quick
 											View</a></span>
@@ -181,11 +181,11 @@
 									<div class="btn-group" role="group">
 										<button type="button" class="btn btn-default"
 											data-toggle="modal" data-target=".login-modal">
-											<i class="fa fa-heart" aria-hidden="true"></i>
+											<i class="fa fa-pencil" aria-hidden="true"></i>
 										</button>
 										<button type="button" class="btn btn-default"
 											onclick="location.href='cart-page.html';">
-											<i class="fa fa-shopping-cart" aria-hidden="true"></i>
+											<i class="fa fa-times" aria-hidden="true"></i>
 										</button>
 									</div>
 								</div>

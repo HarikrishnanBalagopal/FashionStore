@@ -2,10 +2,14 @@ package com.fashion.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.MultipartFile;
 
 @Entity
 @Table(name = "product")
@@ -13,7 +17,8 @@ import org.springframework.stereotype.Component;
 public class Product
 {
 	@Id
-	private String id;
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private Integer id;
 	private String name;
 	private String description;
 	private double price;
@@ -24,12 +29,25 @@ public class Product
 	@Column(name = "supplier_id")
 	private String supplierID;
 
-	public String getId()
+	@Transient
+	private MultipartFile image;
+	
+	public MultipartFile getImage()
+	{
+		return image;
+	}
+
+	public void setImage(MultipartFile image)
+	{
+		this.image = image;
+	}
+
+	public Integer getId()
 	{
 		return id;
 	}
 
-	public void setId(String id)
+	public void setId(Integer id)
 	{
 		this.id = id;
 	}

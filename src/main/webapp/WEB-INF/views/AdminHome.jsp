@@ -27,10 +27,11 @@
 					</div>
 					<div id="addProduct" class="panel-body">
 						<div class="btn-group-vertical">
-							<button type="button" class="btn btn-primary" onclick="window.location.href='AddProduct'">Add
-								Product</button>
-							<button type="button" class="btn btn-primary">View and
-								Update Products</button>
+							<button type="button" class="btn btn-primary"
+								onclick="window.location.href='AddProduct'">Add Product</button>
+							<button type="button" class="btn btn-primary"
+								onclick="window.location.href='AdminProductList'">View
+								and Update Products</button>
 						</div>
 					</div>
 				</div>
@@ -42,8 +43,7 @@
 					</div>
 					<div id="addUser" class="panel-body">
 						<div class="btn-group-vertical">
-							<button type="button" class="btn btn-primary">Add
-								User</button>
+							<button type="button" class="btn btn-primary">Add User</button>
 							<button type="button" class="btn btn-primary">View and
 								Update Users</button>
 						</div>

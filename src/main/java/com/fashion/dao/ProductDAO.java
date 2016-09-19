@@ -8,9 +8,9 @@ public interface ProductDAO
 {
 	public List<Product> list(int sortOrder);
 
-	public Product get(String id);
+	public Product get(Integer id);
 
 	public void saveOrUpdate(Product product);
 
-	public void delete(String id);
+	public void delete(Integer id);
 }
