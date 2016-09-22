@@ -8,9 +8,11 @@ public interface ProductDAO
 {
 	public List<Product> list(int sortOrder);
 
-	public Product get(Integer id);
+	public Product get(String id);
 
-	public void saveOrUpdate(Product product);
+	public boolean save(Product product);
 
-	public void delete(Integer id);
+	public boolean update(Product product);
+
+	public boolean delete(String id);
 }

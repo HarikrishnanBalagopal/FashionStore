@@ -1,96 +1,57 @@
 package com.fashion.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
 import org.springframework.stereotype.Component;
 
-@Entity
-@Table(name = "user_details")
 @Component
 public class UserDetails
 {
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Integer id;
-	private String firstName;
-	private String lastName;
-	private String email;
-	private String address;	
-	private String contactNumber;
-	private String password;
+	private User user;
+	private Address shippingAddress;
+	private Address billingAddress;
+	private CardDetails cardDetails;
 	
-	public Integer getId()
+	public UserDetails()
 	{
-		return id;
+		user = new User();
+		shippingAddress = new Address();
+		billingAddress = new Address();
+		cardDetails = new CardDetails();
+	}
+	
+	public User getUser()
+	{
+		return user;
+	}
+	public void setUser(User user)
+	{
+		this.user = user;
+	}
+	public CardDetails getCardDetails()
+	{
+		return cardDetails;
+	}
+	public void setCardDetails(CardDetails cardDetails)
+	{
+		this.cardDetails = cardDetails;
 	}
 
-	public void setId(Integer id)
+	public Address getShippingAddress()
 	{
-		this.id = id;
+		return shippingAddress;
 	}
 
-	public String getEmail()
+	public void setShippingAddress(Address shippingAddress)
 	{
-		return email;
+		this.shippingAddress = shippingAddress;
 	}
 
-	public void setEmail(String email)
+	public Address getBillingAddress()
 	{
-		this.email = email;
+		return billingAddress;
 	}
 
-	public String getAddress()
+	public void setBillingAddress(Address billingAddress)
 	{
-		return address;
-	}
-
-	public void setAddress(String address)
-	{
-		this.address = address;
-	}
-
-	public String getContactNumber()
-	{
-		return contactNumber;
-	}
-
-	public void setContactNumber(String contactNumber)
-	{
-		this.contactNumber = contactNumber;
-	}
-
-	public String getFirstName()
-	{
-		return firstName;
-	}
-
-	public void setFirstName(String firstName)
-	{
-		this.firstName = firstName;
-	}
-
-	public String getLastName()
-	{
-		return lastName;
-	}
-
-	public void setLastname(String lastName)
-	{
-		this.lastName = lastName;
-	}
-
-	public String getPassword()
-	{
-		return password;
-	}
-
-	public void setPassword(String password)
-	{
-		this.password = password;
+		this.billingAddress = billingAddress;
 	}
 }

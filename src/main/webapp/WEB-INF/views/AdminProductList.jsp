@@ -12,7 +12,8 @@
 			<div class="col-xs-6">
 				<ol class="breadcrumb pull-right">
 					<li><a href="Home">Home</a></li>
-					<li class="active">Product List</li>
+					<li><a href="AdminHome">Admin Home</a></li>
+					<li class="active">Admin Product List</li>
 				</ol>
 			</div>
 		</div>
@@ -167,7 +168,7 @@
 						<div class="col-xs-12">
 							<div class="media">
 								<div class="media-left">
-									<img class="media-object" src="img/products/products-01.jpg"
+									<img class="media-object" src="resources/images/products/${product.name}.jpg"
 										alt="Image"> <span class="maskingImage"><a
 										data-toggle="modal" href=".quick-view" class="btn viewBtn">Quick
 											View</a></span>
@@ -178,6 +179,11 @@
 									</h4>
 									<p>${product.description}</p>
 									<h3>$${product.price}</h3>
+									<ul class="list-inline">
+										<li><h4>Category ID:${product.categoryID}</h4></li>
+										<li><h4>Supplier ID:${product.supplierID}</h4></li>
+									</ul>
+									
 									<div class="btn-group" role="group">
 										<button type="button" class="btn btn-default"
 											data-toggle="modal" data-target=".login-modal">

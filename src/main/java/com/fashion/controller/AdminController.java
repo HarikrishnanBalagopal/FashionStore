@@ -28,7 +28,7 @@ import com.fashion.model.Product;
 import com.fashion.model.Supplier;
 
 @Controller
-public class CRUDController
+public class AdminController
 {	
 	@Autowired
 	CategoryDAO categoryDAO;
@@ -39,15 +39,21 @@ public class CRUDController
 	@Autowired
 	ProductDAO productDAO;
 	
+	@RequestMapping("/AdminHome")
+	public String adminHome()
+	{
+		return "AdminHome";
+	}
+	
 	@RequestMapping("/AddProduct")
 	public ModelAndView addProduct(@ModelAttribute("product") Product product)
 	{
 		ModelAndView modelView = new ModelAndView("AddProduct");
-		List<Category> clist = categoryDAO.list();
-		List<Supplier> slist = supplierDAO.list();
+		List<Category> clist = categoryDAO.list(0);
+		List<Supplier> slist = supplierDAO.list(0);
 
 		Map<String,String> cmap = new LinkedHashMap<String,String>();
-		Map<String,String> smap = new LinkedHashMap<String,String>();
+		Map<Integer,String> smap = new LinkedHashMap<Integer,String>();
 
 		for(Category c: clist)
 			cmap.put(c.getId(), c.getName());
@@ -87,9 +93,23 @@ public class CRUDController
 			}
 		}
 		
-		productDAO.saveOrUpdate(product);
+		productDAO.save(product);
 		
-		return "redirect:/ProductList";
+		return "redirect:/AdminProductList";
+	}
+	
+	@RequestMapping("/AddSupplier")
+	public ModelAndView addSupplier(@ModelAttribute("supplier") Supplier supplier)
+	{
+		ModelAndView modelView = new ModelAndView("AddSupplier");
+		return modelView;
+	}
+	
+	@RequestMapping("/AddSupplierAttempt")
+	public String addSupplierAttempt(@ModelAttribute("supplier") Supplier supplier, Model model)
+	{
+		supplierDAO.save(supplier);
+		return "redirect:/AdminSupplierList";
 	}
 	
 	@RequestMapping("/AdminProductList")
@@ -101,6 +121,19 @@ public class CRUDController
 			s = sort;
 		List<Product> productList = productDAO.list(s);
 		modelView.addObject("productList", productList);
+		modelView.addObject("sortOrder", s);
+		return modelView;
+	}
+	
+	@RequestMapping("/AdminSupplierList")
+	public ModelAndView adminSupplierList(@RequestParam(value = "sort", required = false) Integer sort, ModelMap model)
+	{
+		ModelAndView modelView = new ModelAndView("AdminSupplierList");
+		int s = 0;
+		if(sort != null)
+			s = sort;
+		List<Supplier> supplierList = supplierDAO.list(s);
+		modelView.addObject("supplierList", supplierList);
 		modelView.addObject("sortOrder", s);
 		return modelView;
 	}

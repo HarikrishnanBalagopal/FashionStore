@@ -7,17 +7,19 @@ import com.fashion.model.UserDetails;
 
 public interface UserDAO
 {
-	public List<User> list();
+	public List<User> list(int sortOrder);
 
-	public User get(Integer id);
+	public User get(String email);
 
-	public void saveOrUpdate(User user);
+	public boolean save(User user);
+	
+	public boolean update(User user);
 
-	public void saveOrUpdate(UserDetails userDetails);
+	public boolean delete(String email);
 
-	public void delete(Integer id);
-
-	public boolean isValidUser(String email, String password, boolean isAdmin);
+	public boolean isValidUser(User user);
 	
 	public boolean validateRegistration(UserDetails userDetails);
+	
+	public void registerUser(UserDetails userDetails);
 }

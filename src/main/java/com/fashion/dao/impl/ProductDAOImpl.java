@@ -2,7 +2,6 @@ package com.fashion.dao.impl;
 
 import java.util.List;
 
-import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,58 +30,99 @@ public class ProductDAOImpl implements ProductDAO
 		switch(sortOrder)
 		{
 			case 0:
-			case 1:
-			case 2:
-			case 3:
 				sort = "name";
 				break;
-				
-			case 4:
+			case 1:
 				sort = "price";
 				break;
-			
+			case 2:
+				sort = "quantity";
+				break;
+			case 3:
+				sort = "category_id";
+				break;
+			case 4:
+				sort = "supplier_id";
+				break;
+			case 5:
+				sort = "id";
+				break;
 			default:
 				sort = "name";
 		}
 		
-		String hql = "from Product order by " + sort;
-		System.out.println(hql);
-		
+		String hql = "from Product order by " + sort;		
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		@SuppressWarnings("unchecked")
-		List<Product> listProduct = (List<Product>) query.list();
+		List<Product> list = (List<Product>) query.list();
 
-		return listProduct;
+		return list;
 	}
 
 	@Transactional
-	public void saveOrUpdate(Product product)
+	public Product get(String id)
 	{
-		sessionFactory.getCurrentSession().saveOrUpdate(product);
-	}
-
-	@Transactional
-	public void delete(Integer id)
-	{
-		Product ProductToDelete = new Product();
-		ProductToDelete.setId(id);
-		sessionFactory.getCurrentSession().delete(ProductToDelete);
-	}
-
-	@Transactional
-	public Product get(Integer id)
-	{
-		String hql = "from product where id=" + id;
+		String hql = "from Product where id = '" + id + "'";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
-
 		@SuppressWarnings("unchecked")
-		List<Product> listProduct = (List<Product>) query.list();
+		List<Product> list = (List<Product>) query.list();
 
-		if (listProduct != null && !listProduct.isEmpty())
+		if (list != null && !list.isEmpty())
 		{
-			return listProduct.get(0);
+			return list.get(0);
 		}
 
 		return null;
+	}
+	
+	@Transactional
+	public boolean save(Product product)
+	{
+		try
+		{
+			sessionFactory.getCurrentSession().save(product);
+		}
+		catch(Exception e)
+		{
+			System.out.println("Exception on saving product: " + e);
+			return false;
+		}
+		
+		return true;
+	}
+
+	@Transactional
+	public boolean update(Product product)
+	{
+		try
+		{
+			sessionFactory.getCurrentSession().update(product);
+		}
+		catch(Exception e)
+		{
+			System.out.println("Exception on updating product: " + e);
+			return false;
+		}
+		
+		return true;
+	}
+
+	@Transactional
+	public boolean delete(String id)
+	{
+		Product product = new Product();
+		product.setId(id);
+		
+		try
+		{
+			sessionFactory.getCurrentSession().delete(product);
+		}
+		catch(Exception e)
+		{
+			System.out.println("Exception on deleting product: " + e);
+			return false;
+		}
+		
+		return true;
 	}
 }

@@ -1,27 +1,25 @@
 package com.fashion.model;
 
+import java.math.BigDecimal;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
 @Entity
-@Table(name = "product")
 @Component
 public class Product
 {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Integer id;
+	private String id;
 	private String name;
 	private String description;
-	private double price;
+	private BigDecimal price;
+	private int quantity;
 
 	@Column(name = "category_id")
 	private String categoryID;
@@ -31,23 +29,13 @@ public class Product
 
 	@Transient
 	private MultipartFile image;
-	
-	public MultipartFile getImage()
-	{
-		return image;
-	}
 
-	public void setImage(MultipartFile image)
-	{
-		this.image = image;
-	}
-
-	public Integer getId()
+	public String getId()
 	{
 		return id;
 	}
 
-	public void setId(Integer id)
+	public void setId(String id)
 	{
 		this.id = id;
 	}
@@ -72,14 +60,24 @@ public class Product
 		this.description = description;
 	}
 
-	public double getPrice()
+	public BigDecimal getPrice()
 	{
 		return price;
 	}
 
-	public void setPrice(double price)
+	public void setPrice(BigDecimal price)
 	{
 		this.price = price;
+	}
+
+	public int getQuantity()
+	{
+		return quantity;
+	}
+
+	public void setQuantity(int quantity)
+	{
+		this.quantity = quantity;
 	}
 
 	public String getCategoryID()
@@ -100,5 +98,15 @@ public class Product
 	public void setSupplierID(String supplierID)
 	{
 		this.supplierID = supplierID;
+	}
+
+	public MultipartFile getImage()
+	{
+		return image;
+	}
+
+	public void setImage(MultipartFile image)
+	{
+		this.image = image;
 	}
 }

@@ -3,20 +3,20 @@ package com.fashion.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
 
 @Entity
-@Table(name = "category")
 @Component
 public class Category
 {
 	@Id
-	@Column(name = "id")
 	private String id;
 	private String name;
 	private String description;
+	
+	@Column(name = "is_male")
+	private boolean isMale;
 
 	public String getId()
 	{
@@ -46,5 +46,15 @@ public class Category
 	public void setDescription(String description)
 	{
 		this.description = description;
+	}
+
+	public boolean isMale()
+	{
+		return isMale;
+	}
+
+	public void setMale(boolean isMale)
+	{
+		this.isMale = isMale;
 	}
 }

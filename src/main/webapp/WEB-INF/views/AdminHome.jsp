@@ -57,10 +57,12 @@
 					</div>
 					<div id="addSupplier" class="panel-body">
 						<div class="btn-group-vertical">
-							<button type="button" class="btn btn-primary">Add
+							<button type="button" class="btn btn-primary"
+								onclick="window.location.href='AddSupplier'">Add
 								Supplier</button>
-							<button type="button" class="btn btn-primary">View and
-								Update Suppliers</button>
+							<button type="button" class="btn btn-primary"
+								onclick="window.location.href='AdminSupplierList'">View
+								and Update Suppliers</button>
 						</div>
 					</div>
 				</div>

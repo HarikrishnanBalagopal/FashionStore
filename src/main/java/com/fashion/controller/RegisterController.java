@@ -8,7 +8,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.fashion.dao.AddressDAO;
+import com.fashion.dao.CardDetailsDAO;
 import com.fashion.dao.UserDAO;
+import com.fashion.model.Address;
 import com.fashion.model.User;
 import com.fashion.model.UserDetails;
 
@@ -16,7 +19,7 @@ import com.fashion.model.UserDetails;
 public class RegisterController
 {
 	@Autowired
-	UserDAO userdao;
+	UserDAO userDAO;
 	
 	@RequestMapping("/Register")
 	public String register(@ModelAttribute("userDetails") UserDetails userDetails)
@@ -28,18 +31,11 @@ public class RegisterController
 	public ModelAndView registerAttempt(@ModelAttribute("userDetails") UserDetails userDetails, ModelMap model)
 	{
 		ModelAndView modelview = null;
-		if(userdao.validateRegistration(userDetails))
+		if(userDAO.validateRegistration(userDetails))
 		{
-			User user = new User();
-			user.setEmail(userDetails.getEmail());
-			user.setPassword(userDetails.getPassword());
-			user.setAdmin(false);
-
-			userdao.saveOrUpdate(user);
-			userdao.saveOrUpdate(userDetails);
-			
+			userDAO.registerUser(userDetails);
 			modelview = new ModelAndView("UserHome");
-			modelview.addObject("email", userDetails.getEmail());
+			modelview.addObject("email", userDetails.getUser().getEmail());
 		}
 		else
 		{

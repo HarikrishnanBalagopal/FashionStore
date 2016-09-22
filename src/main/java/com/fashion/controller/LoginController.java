@@ -27,12 +27,17 @@ public class LoginController
 	public ModelAndView loginAttempt(@ModelAttribute("user") User user, ModelMap model)
 	{
 		ModelAndView modelview = null;
-		if(userdao.isValidUser(user.getEmail(), user.getPassword(), false))
+		
+		user.setAdmin(false);
+		if(userdao.isValidUser(user))
 		{
 			modelview = new ModelAndView("UserHome");
 			modelview.addObject("email", user.getEmail());
+			return modelview;
 		}
-		else if(userdao.isValidUser(user.getEmail(), user.getPassword(), true))
+		
+		user.setAdmin(true);
+		if(userdao.isValidUser(user))
 		{
 			modelview = new ModelAndView("AdminHome");
 			modelview.addObject("email", user.getEmail());

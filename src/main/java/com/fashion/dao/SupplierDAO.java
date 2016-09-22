@@ -6,11 +6,13 @@ import com.fashion.model.Supplier;
 
 public interface SupplierDAO
 {
-	public List<Supplier> list();
+	public List<Supplier> list(int sortOrder);
 
-	public Supplier get(String id);
+	public Supplier get(int id);
 
-	public void saveOrUpdate(Supplier supplier);
+	public boolean save(Supplier supplier);
 
-	public void delete(String id);
+	public boolean update(Supplier supplier);
+
+	public boolean delete(int id);
 }
