@@ -40,7 +40,6 @@ public class LoginController
 		if(userdao.isValidUser(user))
 		{
 			modelview = new ModelAndView("AdminHome");
-			modelview.addObject("email", user.getEmail());
 		}
 		else
 		{

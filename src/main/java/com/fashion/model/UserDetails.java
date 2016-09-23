@@ -14,6 +14,7 @@ public class UserDetails
 	{
 		user = new User();
 		shippingAddress = new Address();
+		shippingAddress.setShipping(true);
 		billingAddress = new Address();
 		cardDetails = new CardDetails();
 	}

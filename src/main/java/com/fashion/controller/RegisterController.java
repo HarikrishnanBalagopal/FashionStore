@@ -1,5 +1,8 @@
 package com.fashion.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -21,9 +24,20 @@ public class RegisterController
 	@Autowired
 	UserDAO userDAO;
 	
-	@RequestMapping("/Register")
-	public String register(@ModelAttribute("userDetails") UserDetails userDetails)
+	private static List<String> cityList = new ArrayList<String>();
+	
+	public RegisterController()
 	{
+		cityList.add("city0");
+		cityList.add("city1");
+		cityList.add("city2");
+		cityList.add("city3");
+	}
+	
+	@RequestMapping("/Register")
+	public String register(@ModelAttribute("userDetails") UserDetails userDetails, ModelMap model)
+	{
+		model.addAttribute("cityList", cityList);
 		return "Register";
 	}
 	

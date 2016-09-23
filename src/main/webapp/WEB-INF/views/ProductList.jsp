@@ -141,11 +141,9 @@
 				<div class="row filterArea">
 					<div class="col-xs-6">
 						<select name="sortOrder" id="sortOrder" class="select-drop">
-							<option value="0">Default sorting</option>
-							<option value="1">Sort by popularity</option>
-							<option value="2">Sort by rating</option>
-							<option value="3">Sort by newness</option>
-							<option value="4">Sort by price</option>
+							<option value="0">Sort by name</option>
+							<option value="1">Sort by price</option>
+							<option value="2">Sort by quantity</option>
 						</select>
 					</div>
 					<div class="col-xs-6">
@@ -167,26 +165,31 @@
 						<div class="col-xs-12">
 							<div class="media">
 								<div class="media-left">
-									<img class="media-object" src="resources/images/products/${product.name}.jpg"
-										alt="Image"> <span class="maskingImage"><a
-										data-toggle="modal" href=".quick-view" class="btn viewBtn">Quick
-											View</a></span>
+									<img class="media-object"
+										src="resources/images/products/${product.id}.jpg" alt="Image">
+									<span class="maskingImage"><a data-toggle="modal"
+										href=".quick-view" class="btn viewBtn">Quick View</a></span>
 								</div>
 								<div class="media-body">
-									<h4 class="media-heading">
-										<a href="SingleProduct">${product.name}</a>
-									</h4>
-									<p>${product.description}</p>
-									<h3>$${product.price}</h3>
-									<div class="btn-group" role="group">
-										<button type="button" class="btn btn-default"
-											data-toggle="modal" data-target=".login-modal">
-											<i class="fa fa-heart" aria-hidden="true"></i>
-										</button>
-										<button type="button" class="btn btn-default"
-											onclick="location.href='cart-page.html';">
-											<i class="fa fa-shopping-cart" aria-hidden="true"></i>
-										</button>
+									<div class="col-xs-10 content-wrap">
+										<h4 class="media-heading">
+											<a href="SingleProduct">${product.name}</a>
+										</h4>
+										<p>${product.description}</p>
+										<h3>$${product.price}</h3>
+										<div class="btn-group" role="group">
+											<button type="button" class="btn btn-default"
+												data-toggle="modal" data-target=".login-modal">
+												<i class="fa fa-heart" aria-hidden="true"></i>
+											</button>
+											<button type="button" class="btn btn-default"
+												onclick="location.href='cart-page.html';">
+												<i class="fa fa-shopping-cart" aria-hidden="true"></i>
+											</button>
+										</div>
+									</div>
+									<div class="col-xs-2">
+										<i class="fa fa-times">${product.quantity}</i>
 									</div>
 								</div>
 							</div>
