@@ -3,7 +3,6 @@ package com.fashion.controller;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
-import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -66,7 +65,6 @@ public class AdminController
 		return modelView;
 	}
 
-	// EditProductAttempt
 	@RequestMapping("/AddProductAttempt")
 	public String addProductAttempt(@ModelAttribute("product") Product product, HttpServletRequest request, Model model)
 	{

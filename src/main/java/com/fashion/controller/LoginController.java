@@ -28,23 +28,24 @@ public class LoginController
 	{
 		ModelAndView modelview = null;
 		
-		user.setAdmin(false);
-		if(userdao.isValidUser(user))
+		user = userdao.getValidUser(user);
+		if(user != null)
 		{
-			modelview = new ModelAndView("UserHome");
-			modelview.addObject("email", user.getEmail());
-			return modelview;
-		}
-		
-		user.setAdmin(true);
-		if(userdao.isValidUser(user))
-		{
-			modelview = new ModelAndView("AdminHome");
+			if(user.getRole().equals("ROLE_USER"))
+			{
+				modelview = new ModelAndView("UserHome");
+				modelview.addObject("email", user.getEmail());
+			}
+			else if(user.getRole().equals("ROLE_ADMIN"))
+			{
+				modelview = new ModelAndView("AdminHome");
+			}
 		}
 		else
 		{
 			modelview = new ModelAndView("InvalidCredentials");
 		}
+
 		return modelview;
 	}
 }

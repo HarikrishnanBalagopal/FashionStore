@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -31,9 +32,8 @@
 					</div>
 					<div class="col-md-6 col-xs-12">
 						<ul class="list-inline pull-right">
-							<li><span><a data-toggle="modal" href='#login'>Log
-										in</a><small>or</small><a data-toggle="modal" href='#signup'>Create
-										an account</a></span></li>
+							<li><span><a href="Login">Log in</a><small>or</small><a
+									href="Register">Create an account</a></span></li>
 							<li class="dropdown searchBox"><a href="#"
 								class="dropdown-toggle" data-toggle="dropdown"><i
 									class="fa fa-search hicon"></i></a>
@@ -51,11 +51,10 @@
 									<li><a href="#">
 											<div class="media">
 												<img class="media-left media-object"
-													src="img/home/cart-items/cart-item-01.jpg" alt="cart-Image">
+													src="resources/images/cart-item-01.jpg" alt="cart-Image">
 												<div class="media-body">
 													<h5 class="media-heading">
-														INCIDIDUNT UT <br>
-														<span>2 X $199</span>
+														INCIDIDUNT UT <br> <span>2 X $199</span>
 													</h5>
 												</div>
 											</div>
@@ -63,11 +62,10 @@
 									<li><a href="#">
 											<div class="media">
 												<img class="media-left media-object"
-													src="img/home/cart-items/cart-item-01.jpg" alt="cart-Image">
+													src="resources/images/cart-item-01.jpg" alt="cart-Image">
 												<div class="media-body">
 													<h5 class="media-heading">
-														INCIDIDUNT UT <br>
-														<span>2 X $199</span>
+														INCIDIDUNT UT <br> <span>2 X $199</span>
 													</h5>
 												</div>
 											</div>
@@ -96,7 +94,7 @@
 					class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="javascript:void(0)"> <img
+			<a class="navbar-brand" href="Home"> <img
 				src="resources/images/logo.png" alt=""><span
 				class="company-name">B<small>IG</small> B<small>AG</small></span></a>
 		</div>

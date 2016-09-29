@@ -1,6 +1,6 @@
 <%@ include file="WEB-INF/views/Common-Header.jsp"%>
 <!-- Carousel
-    ================================================== -->
+================================================== -->
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
 	<!-- Indicators -->
 	<ol class="carousel-indicators">
@@ -8,10 +8,9 @@
 		<li data-target="#myCarousel" data-slide-to="1"></li>
 		<li data-target="#myCarousel" data-slide-to="2"></li>
 	</ol>
-	<div class="carousel-inner" role="listbox"
-		style="width: 100%; height: 500px !important;">
+	<div class="carousel-inner" role="listbox">
 		<div class="item active">
-			<img class="first-slide" src="resources/images/shoe1.png"
+			<img class="first-slide" src="resources/images/home/slide1.jpg"
 				alt="First slide">
 			<div class="container">
 				<div class="carousel-caption">
@@ -31,7 +30,7 @@
 			</div>
 		</div>
 		<div class="item">
-			<img class="second-slide" src="resources/images/shoe2.png"
+			<img class="second-slide" src="resources/images/home/slide2.jpg"
 				alt="Second slide">
 			<div class="container">
 				<div class="carousel-caption">
@@ -47,7 +46,7 @@
 			</div>
 		</div>
 		<div class="item">
-			<img class="third-slide" src="resources/images/shoe3.png"
+			<img class="third-slide" src="resources/images/home/slide3.jpg"
 				alt="Third slide">
 			<div class="container">
 				<div class="carousel-caption">
@@ -83,14 +82,13 @@
 				</div>
 			</div>
 			<div class="col-sm-4 col-xs-12">
-				<div class="thumbnail"
-					onclick="location.href='SingleProduct';">
+				<div class="thumbnail" onclick="location.href='SingleProduct';">
 					<div class="imageWrapper">
-						<img src="resources/images/home/featured-collection/featured-collection-01.jpg"
+						<img
+							src="resources/images/home/featured-collection/featured-collection-01.jpg"
 							alt="feature-collection-image">
 						<div class="masking">
-							<a href="ProductGrid" class="btn viewBtn">View
-								Products</a>
+							<a href="ProductGrid" class="btn viewBtn">View Products</a>
 						</div>
 					</div>
 					<div class="caption">
@@ -99,14 +97,13 @@
 				</div>
 			</div>
 			<div class="col-sm-4 col-xs-12">
-				<div class="thumbnail"
-					onclick="location.href='SingleProduct';">
+				<div class="thumbnail" onclick="location.href='SingleProduct';">
 					<div class="imageWrapper">
-						<img src="resources/images/home/featured-collection/featured-collection-02.jpg"
+						<img
+							src="resources/images/home/featured-collection/featured-collection-02.jpg"
 							alt="feature-collection-image">
 						<div class="masking">
-							<a href="ProductGrid" class="btn viewBtn">View
-								Products</a>
+							<a href="ProductGrid" class="btn viewBtn">View Products</a>
 						</div>
 					</div>
 					<div class="caption">
@@ -115,14 +112,13 @@
 				</div>
 			</div>
 			<div class="col-sm-4 col-xs-12">
-				<div class="thumbnail"
-					onclick="location.href='SingleProduct';">
+				<div class="thumbnail" onclick="location.href='SingleProduct';">
 					<div class="imageWrapper">
-						<img src="resources/images/home/featured-collection/featured-collection-03.jpg"
+						<img
+							src="resources/images/home/featured-collection/featured-collection-03.jpg"
 							alt="feature-collection-image">
 						<div class="masking">
-							<a href="ProductGrid" class="btn viewBtn">View
-								Products</a>
+							<a href="ProductGrid" class="btn viewBtn">View Products</a>
 						</div>
 					</div>
 					<div class="caption">

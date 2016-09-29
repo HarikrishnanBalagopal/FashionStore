@@ -13,9 +13,7 @@ public class User
 	@Id
 	private String email;
 	private String password;
-	
-	@Column(name = "is_admin")
-	private boolean isAdmin;
+	private String role;
 	
 	@Column(name = "first_name")
 	private String firstName;
@@ -42,14 +40,6 @@ public class User
 	{
 		this.password = password;
 	}
-	public boolean isAdmin()
-	{
-		return isAdmin;
-	}
-	public void setAdmin(boolean isAdmin)
-	{
-		this.isAdmin = isAdmin;
-	}
 	public String getFirstName()
 	{
 		return firstName;
@@ -73,5 +63,13 @@ public class User
 	public void setContactNo(String contactNo)
 	{
 		this.contactNo = contactNo;
+	}
+	public String getRole()
+	{
+		return role;
+	}
+	public void setRole(String role)
+	{
+		this.role = role;
 	}
 }
