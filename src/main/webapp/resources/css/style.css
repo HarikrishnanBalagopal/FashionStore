@@ -448,6 +448,19 @@ a:focus {
     padding-top: 10px;
 }
 
+.filterArea .sbSelector:link, .filterArea .sbSelector:visited, .filterArea .sbSelector:hover {
+    color: #252525!important;
+}
+.filterArea .sbSelector {
+    font-family: 'Oxygen',sans-serif;
+    font-size: 15px;
+    line-height: 32px;
+    text-indent: 18px;
+}
+.filterArea .sbHolder, .filterArea .sbSelector {
+    width: 180px!important;
+    height: 35px!important;
+}
 @media (min-width: 768px) {
     .navbar-default.navbar-fixed-top {
         margin-bottom: 31px;
@@ -1661,6 +1674,7 @@ body.bodyColor.container {
     transition: all 0.3s ease-in-out;
     font-size: 14px;
     color: #ffffff;
+    line-height:36px;
 }
 
 .imageBox .productImage .productMasking ul li a:hover,

@@ -26,7 +26,9 @@ public class ProductTest
 			System.out.println("product created successfully");
 		else
 			System.out.println("not able to create the product");
-		
+
+		productDAO.delete("MOB_004");
+
 		context.close();
 	}
 }

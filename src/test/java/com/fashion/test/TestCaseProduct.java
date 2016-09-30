@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import java.math.BigDecimal;
 
-import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -15,16 +15,16 @@ import com.fashion.model.Product;
 public class TestCaseProduct
 {
 	@Autowired
-	ProductDAO productDAO;
+	private static ProductDAO productDAO;
 
 	@Autowired
-	Product product;
+	private static Product product;
 
 	@Autowired
-	AnnotationConfigApplicationContext context;
+	private static AnnotationConfigApplicationContext context;
 
-	@Before
-	public void init()
+	@BeforeClass
+	public static void init()
 	{
 		context = new AnnotationConfigApplicationContext();
 		context.scan("com.fashion");

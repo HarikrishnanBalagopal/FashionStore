@@ -10,7 +10,7 @@ public class UserTest
 	public static void main(String[] args)
 	{
 		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
-		context.scan("com.niit");
+		context.scan("com.fashion");
 		context.refresh();
 
 		UserDAO userDAO = (UserDAO) context.getBean("userDAO");

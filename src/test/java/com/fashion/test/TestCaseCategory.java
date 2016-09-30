@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import java.util.List;
 
-import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -15,16 +15,16 @@ import com.fashion.model.Category;
 public class TestCaseCategory
 {	
 	@Autowired
-	CategoryDAO categoryDAO;
+	private static CategoryDAO categoryDAO;
 	
 	@Autowired
-	Category category;
+	private static Category category;
 	
 	@Autowired
-	AnnotationConfigApplicationContext context;
+	private static AnnotationConfigApplicationContext context;
 	
-	@Before
-	public void init()
+	@BeforeClass
+	public static void init()
 	{
 		context = new AnnotationConfigApplicationContext();
 		context.scan("com.fashion");
@@ -37,20 +37,23 @@ public class TestCaseCategory
 	@Test
 	public void categoryListTestCase()
 	{
-		List<Category> list = categoryDAO.list(0);		
-		assertEquals("Category List Test Case", 5, list.size());
+		List<Category> list0 = categoryDAO.list(0);		
+		assertEquals("Category List Test Case", 5, list0.size());
+		List<Category> list1 = categoryDAO.listFlag(true, 0);
+		assertEquals("Category List Flag Test Case", 5, list1.size());
 	}
-	
+
 	@Test
 	public void categoryAddTestCase()
 	{
 		category.setId("C08");
 		category.setName("Category08");
 		category.setDescription("TestDesc08");
+		category.setMale(true);
 		
 		assertEquals("Create Category", true, categoryDAO.save(category));
 	}
-    
+	
 	@Test
 	public void categoryUpdateTestCase()
 	{

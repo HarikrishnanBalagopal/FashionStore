@@ -33,35 +33,19 @@
 								<li><a href="javascript:;" data-toggle="collapse"
 									data-target="#men">Men <i class="fa fa-plus"></i></a>
 									<ul id="men" class="collapse collapseItem">
-										<li><a href="#"><i class="fa fa-caret-right"
-												aria-hidden="true"></i>Accessories <span>(6)</span></a></li>
-										<li><a href="#"><i class="fa fa-caret-right"
-												aria-hidden="true"></i>Bag <span>(6)</span></a></li>
-										<li><a href="#"><i class="fa fa-caret-right"
-												aria-hidden="true"></i>Cloths <span>(25)</span></a></li>
-										<li><a href="#"><i class="fa fa-caret-right"
-												aria-hidden="true"></i>Bed &amp; Bath <span>(2)</span></a></li>
-										<li><a href="#"><i class="fa fa-caret-right"
-												aria-hidden="true"></i>Swimming costume <span>(5)</span></a></li>
-										<li><a href="#"><i class="fa fa-caret-right"
-												aria-hidden="true"></i>Sport Tops &amp; Shoes <span>(3)</span></a></li>
-									</ul></li>
+										<c:forEach items="${maleCategoryList}" var="maleCategory">
+											<li><a href="/FashionStore/ProductList?category=${maleCategory.id}"><i class="fa fa-caret-right" aria-hidden="true"></i>${maleCategory.name}</a></li>
+										</c:forEach>
+									</ul>
+								</li>
 								<li><a href="javascript:;" data-toggle="collapse"
 									data-target="#women">Women <i class="fa fa-plus"></i></a>
 									<ul id="women" class="collapse collapseItem">
-										<li><a href="#"><i class="fa fa-caret-right"
-												aria-hidden="true"></i>Accessories <span>(6)</span></a></li>
-										<li><a href="#"><i class="fa fa-caret-right"
-												aria-hidden="true"></i>Bag <span>(6)</span></a></li>
-										<li><a href="#"><i class="fa fa-caret-right"
-												aria-hidden="true"></i>Cloths <span>(25)</span></a></li>
-										<li><a href="#"><i class="fa fa-caret-right"
-												aria-hidden="true"></i>Bed &amp; Bath <span>(2)</span></a></li>
-										<li><a href="#"><i class="fa fa-caret-right"
-												aria-hidden="true"></i>Swimming costume <span>(5)</span></a></li>
-										<li><a href="#"><i class="fa fa-caret-right"
-												aria-hidden="true"></i>Sport Tops &amp; Shoes <span>(3)</span></a></li>
-									</ul></li>
+										<c:forEach items="${femaleCategoryList}" var="femaleCategory">
+											<li><a href="/FashionStore/ProductList?category=${femaleCategory.id}"><i class="fa fa-caret-right" aria-hidden="true"></i>${femaleCategory.name}</a></li>
+										</c:forEach>
+									</ul>
+								</li>
 								<li><a href="javascript:;" data-toggle="collapse"
 									data-target="#kids">Kids <i class="fa fa-plus"></i></a>
 									<ul id="kids" class="collapse collapseItem">
@@ -140,7 +124,7 @@
 			<div class="col-md-9 col-sm-8 col-xs-12">
 				<div class="row filterArea">
 					<div class="col-xs-6">
-						<select name="sortOrder" id="sortOrder" class="select-drop">
+						<select name="sortOrder" id="sortOrder" class="sbSelector select-drop">
 							<option value="0">Sort by name</option>
 							<option value="1">Sort by price</option>
 							<option value="2">Sort by quantity</option>
@@ -205,7 +189,7 @@
 	var e = document.querySelector("#sortOrder");
 	e.value = ${sortOrder};
 	e.addEventListener("change", function() {
-		window.location.href = "/FashionStore/ProductList?sort=" + this.value;
+		window.location.href = "/FashionStore/ProductList?" + ${categoryQuery} "sort=" + this.value;
 	});
 </script>
 <%@ include file="Common-Footer.jsp"%>

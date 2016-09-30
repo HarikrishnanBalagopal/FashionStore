@@ -24,11 +24,10 @@ public class CategoryDAOImpl implements CategoryDAO
 		this.sessionFactory = sessionFactory;
 	}
 
-	@Transactional
-	public List<Category> list(int sortOrder)
+	private String listHelper(int sortOrder)
 	{
 		String sort = "name";
-		
+
 		switch(sortOrder)
 		{
 			case 0:
@@ -45,7 +44,25 @@ public class CategoryDAOImpl implements CategoryDAO
 				sort = "name";
 		}
 		
-		String hql = "from Category order by " + sort;		
+		return sort;
+	}
+	
+	@Transactional
+	public List<Category> list(int sortOrder)
+	{
+		
+		String hql = "from Category order by " + listHelper(sortOrder);		
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		@SuppressWarnings("unchecked")
+		List<Category> list = (List<Category>) query.list();
+
+		return list;
+	}
+
+	@Transactional
+	public List<Category> listFlag(boolean isMale, int sortOrder)
+	{
+		String hql = "from Category where is_male = " + isMale + " order by " + listHelper(sortOrder);
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		@SuppressWarnings("unchecked")
 		List<Category> list = (List<Category>) query.list();
