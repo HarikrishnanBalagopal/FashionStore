@@ -37,7 +37,7 @@ public class ProductListController
 		model.addAttribute("femaleCategoryList", categoryDAO.listFlag(false, 0));
 		model.addAttribute("productList", productList);
 		model.addAttribute("sortOrder", s);
-		return "ProductGrid";
+		return "user/ProductGrid";
 	}
 
 	@RequestMapping("/ProductList")
@@ -56,6 +56,6 @@ public class ProductListController
 		model.addAttribute("femaleCategoryList", categoryDAO.listFlag(false, 0));
 		model.addAttribute("productList", productList);
 		model.addAttribute("sortOrder", s);
-		return "ProductList";
+		return "user/ProductList";
 	}
 }

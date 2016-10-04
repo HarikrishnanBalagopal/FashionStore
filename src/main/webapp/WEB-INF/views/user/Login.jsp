@@ -1,4 +1,3 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ include file="Common-Header.jsp"%>
 <section class="lightSection pageHeader">
@@ -53,6 +52,9 @@
 		</div>
 	</div>
 </section>
+<c:if test="${invalidCredentials == true}">
+	<%@ include file="InvalidCredentials.jsp"%>
+</c:if>
 <script type="text/javascript">
 	var elem = document.getElementById("LinkLogin");
 	elem.className += " active";

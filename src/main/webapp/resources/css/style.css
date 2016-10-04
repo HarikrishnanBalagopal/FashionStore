@@ -5744,16 +5744,65 @@ body.bodyColor.container {
     }
 }
 
+.adminHome
+{
+	padding-top: 0;
+}
+.supplierTable
+{
+    font-size: 16px;
+}
+.supplierTable
+{
+    font-size: 16px;
+}
+.supplierTable
+{
+    font-size: 16px;
+}
+.supplierTable a
+{
+	color:#444444;
+}
+.supplierTable a:hover
+{
+	color:#000000;
+}
 #addProduct
 {
 	    background: url("/FashionStore/resources/images/admin-home/add-product-bg.jpg") center no-repeat;
 }
 
-#addUser
+#addCategory
 {
-	    background: url("/FashionStore/resources/images/admin-home/add-user-bg.png") center no-repeat;
+	    background: url("/FashionStore/resources/images/admin-home/add-category-bg.png") center no-repeat;
 }
 #addSupplier
 {
 	    background: url("/FashionStore/resources/images/admin-home/add-supplier-bg.jpg") center no-repeat;
+}
+#invalidCredentialsPanel
+{
+	border-radius: 0;
+}
+#invalidCredentials
+{
+	padding: 0;
+	border-radius: 0;
+	background: #ff2222;
+}
+#invalidCredentials h3
+{
+	text-align: center;
+	line-height: 60px;
+    font-weight: 700;
+	color: white;
+}
+#invalidCredentials + .panel-body
+{
+	text-align: center;
+	border: 5px solid #f0f0f0;
+    border-top: none;
+    border-radius: 0;
+    text-align: center;
 }

@@ -1,9 +1,11 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>BigBag Store</title>
 <script src="https://use.fontawesome.com/20c7f48529.js"></script>
 <link rel="stylesheet"
@@ -32,8 +34,15 @@
 					</div>
 					<div class="col-md-6 col-xs-12">
 						<ul class="list-inline pull-right">
-							<li><span><a href="Login">Log in</a><small>or</small><a
-									href="Register">Create an account</a></span></li>
+							<c:choose>
+								<c:when test="${empty isLoggedIn}">
+									<li><span><a href="Login">Log in</a> <small>or</small>
+											<a href="Register">Create an account</a></span></li>
+								</c:when>
+								<c:otherwise>
+									<li><a href="AccountHome">Welcome ${email} |</a> <a href="LogOut">Log Out</a></li>
+								</c:otherwise>
+							</c:choose>
 							<li class="dropdown searchBox"><a href="#"
 								class="dropdown-toggle" data-toggle="dropdown"><i
 									class="fa fa-search hicon"></i></a>
@@ -72,7 +81,7 @@
 									</a></li>
 									<li>
 										<div class="btn-group" role="group" aria-label="...">
-											<button type="button" class="btn btn-default">Shopping
+											<button type="button" class="btn btn-default" onclick="location.href='/FashionStore/Cart'">Shopping
 												Cart</button>
 											<button type="button" class="btn btn-default">Checkout</button>
 										</div>

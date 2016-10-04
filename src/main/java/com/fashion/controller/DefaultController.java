@@ -15,12 +15,12 @@ public class DefaultController
 	@RequestMapping("/AboutUs")
 	public String aboutUs()
 	{
-		return "AboutUs";
+		return "user/AboutUs";
 	}
 	
 	@RequestMapping("/ContactUs")
 	public String contactUs()
 	{
-		return "ContactUs";
+		return "user/ContactUs";
 	}
 }

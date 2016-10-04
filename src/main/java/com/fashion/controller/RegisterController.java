@@ -3,6 +3,8 @@ package com.fashion.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -24,6 +26,9 @@ public class RegisterController
 	@Autowired
 	UserDAO userDAO;
 	
+	@Autowired
+	HttpSession session;
+	
 	private static List<String> cityList = new ArrayList<String>();
 	
 	public RegisterController()
@@ -38,7 +43,7 @@ public class RegisterController
 	public String register(@ModelAttribute("userDetails") UserDetails userDetails, ModelMap model)
 	{
 		model.addAttribute("cityList", cityList);
-		return "Register";
+		return "user/Register";
 	}
 	
 	@RequestMapping(value="/RegisterAttempt", method = RequestMethod.POST)
@@ -48,12 +53,12 @@ public class RegisterController
 		if(userDAO.validateRegistration(userDetails))
 		{
 			userDAO.registerUser(userDetails);
-			modelview = new ModelAndView("UserHome");
-			modelview.addObject("email", userDetails.getUser().getEmail());
+			modelview = new ModelAndView("user/UserHome");
+			session.setAttribute("email", userDetails.getUser().getEmail());
 		}
 		else
 		{
-			modelview = new ModelAndView("Register");
+			modelview = new ModelAndView("user/Register");
 			modelview.addObject("error", "Account already exists with given email");
 		}
 		return modelview;

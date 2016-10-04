@@ -1,4 +1,3 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ include file="Common-Header.jsp"%>
 <!-- LIGHT SECTION -->
 <section class="lightSection clearfix pageHeader">
@@ -6,13 +5,13 @@
 		<div class="row">
 			<div class="col-xs-6">
 				<div class="page-title">
-					<h2>Product Grid View</h2>
+					<h2>Product List View</h2>
 				</div>
 			</div>
 			<div class="col-xs-6">
 				<ol class="breadcrumb pull-right">
 					<li><a href="Home">Home</a></li>
-					<li class="active">Product Grid</li>
+					<li class="active">Product List</li>
 				</ol>
 			</div>
 		</div>
@@ -34,7 +33,7 @@
 									data-target="#men">Men <i class="fa fa-plus"></i></a>
 									<ul id="men" class="collapse collapseItem">
 										<c:forEach items="${maleCategoryList}" var="maleCategory">
-											<li><a href="/FashionStore/ProductGrid?category=${maleCategory.id}"><i class="fa fa-caret-right" aria-hidden="true"></i>${maleCategory.name}</a></li>
+											<li><a href="/FashionStore/ProductList?category=${maleCategory.id}"><i class="fa fa-caret-right" aria-hidden="true"></i>${maleCategory.name}</a></li>
 										</c:forEach>
 									</ul>
 								</li>
@@ -42,7 +41,7 @@
 									data-target="#women">Women <i class="fa fa-plus"></i></a>
 									<ul id="women" class="collapse collapseItem">
 										<c:forEach items="${femaleCategoryList}" var="femaleCategory">
-											<li><a href="/FashionStore/ProductGrid?category=${femaleCategory.id}"><i class="fa fa-caret-right" aria-hidden="true"></i>${femaleCategory.name}</a></li>
+											<li><a href="/FashionStore/ProductList?category=${femaleCategory.id}"><i class="fa fa-caret-right" aria-hidden="true"></i>${femaleCategory.name}</a></li>
 										</c:forEach>
 									</ul>
 								</li>
@@ -132,43 +131,54 @@
 					</div>
 					<div class="col-xs-6">
 						<div class="btn-group pull-right" role="group">
-							<button type="button" class="btn btn-default active"
+							<button type="button" class="btn btn-default"
 								onclick="window.location.href='ProductGrid'">
 								<i class="fa fa-th" aria-hidden="true"></i><span>Grid</span>
 							</button>
-							<button type="button" class="btn btn-default"
+							<button type="button" class="btn btn-default active"
 								onclick="window.location.href='ProductList'">
 								<i class="fa fa-th-list" aria-hidden="true"></i><span>List</span>
 							</button>
 						</div>
 					</div>
 				</div>
-				<div class="row">
+				<div class="row productListSingle">
+
 					<c:forEach items="${productList}" var="product">
-						<div class="col-sm-4 col-xs-12">
-							<div class="productBox">
-								<div class="productImage clearfix">
-									<img src="resources/images/products/${product.id}.jpg" alt="products-img">
-									<div class="productMasking">
-										<ul class="list-inline btn-group" role="group">
-											<li><a data-toggle="modal" href=".login-modal"
-												class="btn btn-default"><i class="fa fa-heart"></i></a></li>
-											<li><a href="cart-page.html" class="btn btn-default"><i
-													class="fa fa-shopping-cart"></i></a></li>
-											<li><a class="btn btn-default" data-toggle="modal"
-												href=".quick-view"><i class="fa fa-eye"></i></a></li>
-										</ul>
-									</div>
+						<div class="col-xs-12">
+							<div class="media">
+								<div class="media-left">
+									<img class="media-object"
+										src="resources/images/products/${product.id}.jpg" alt="Image">
+									<span class="maskingImage"><a data-toggle="modal"
+										href=".quick-view" class="btn viewBtn">Quick View</a></span>
 								</div>
-								<div class="productCaption clearfix">
-									<a href="single-product.html">
-										<h5>${product.name}</h5>
-									</a>
-									<h3>$${product.price}</h3>
+								<div class="media-body">
+									<div class="col-xs-10 content-wrap">
+										<h4 class="media-heading">
+											<a href="SingleProduct">${product.name}</a>
+										</h4>
+										<p>${product.description}</p>
+										<h3>$${product.price}</h3>
+										<div class="btn-group" role="group">
+											<button type="button" class="btn btn-default"
+												data-toggle="modal" data-target=".login-modal">
+												<i class="fa fa-heart" aria-hidden="true"></i>
+											</button>
+											<button type="button" class="btn btn-default"
+												onclick="location.href='/FashionStore/AddToCart?id=${product.id}';">
+												<i class="fa fa-shopping-cart" aria-hidden="true"></i>
+											</button>
+										</div>
+									</div>
+									<div class="col-xs-2">
+										<i class="fa fa-times">${product.quantity}</i>
+									</div>
 								</div>
 							</div>
 						</div>
 					</c:forEach>
+
 				</div>
 			</div>
 		</div>
@@ -178,7 +188,7 @@
 	var e = document.querySelector("#sortOrder");
 	e.value = ${sortOrder};
 	e.addEventListener("change", function() {
-		window.location.href = "/FashionStore/ProductGrid?" + ${categoryQuery} "sort=" + this.value;
+		window.location.href = "/FashionStore/ProductList?" + ${categoryQuery} "sort=" + this.value;
 	});
 </script>
 <%@ include file="Common-Footer.jsp"%>
