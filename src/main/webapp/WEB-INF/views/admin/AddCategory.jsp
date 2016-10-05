@@ -20,7 +20,12 @@
 								<form:input path="name" type="text" class="form-control"
 									required="required" />
 							</div>
-
+							<div class="form-group">
+								<form:radiobutton path="male" value="true" />
+								Male
+								<form:radiobutton path="male" value="false" />
+								Female
+							</div>
 							<div class="form-group">
 								<form:label path="description">Category Description</form:label>
 								<form:input path="description" type="text" class="form-control"

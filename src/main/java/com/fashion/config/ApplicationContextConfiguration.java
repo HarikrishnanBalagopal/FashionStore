@@ -17,6 +17,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import com.fashion.model.Address;
 import com.fashion.model.CardDetails;
 import com.fashion.model.Category;
+import com.fashion.model.Order;
 import com.fashion.model.Product;
 import com.fashion.model.Supplier;
 import com.fashion.model.User;
@@ -58,6 +59,7 @@ public class ApplicationContextConfiguration
     	sessionBuilder.addAnnotatedClasses(Product.class);
     	sessionBuilder.addAnnotatedClass(User.class);
     	sessionBuilder.addAnnotatedClass(CardDetails.class);
+    	sessionBuilder.addAnnotatedClass(Order.class);
     	return sessionBuilder.buildSessionFactory();
     }
     

@@ -22,7 +22,7 @@ public class ProductListController
 	ProductDAO productDAO;
 
 	@RequestMapping("/ProductGrid")
-	String productGrid(@RequestParam(value = "category", required = false) Integer category, @RequestParam(value = "sort", required = false) Integer sort, ModelMap model)
+	String productGrid(@RequestParam(value = "category", required = false) String category, @RequestParam(value = "sort", required = false) Integer sort, ModelMap model)
 	{
 		int s = sort == null ? 0 : sort;
 		List<Product> productList;
@@ -41,7 +41,7 @@ public class ProductListController
 	}
 
 	@RequestMapping("/ProductList")
-	String productList(@RequestParam(value = "category", required = false) Integer category, @RequestParam(value = "sort", required = false) Integer sort, ModelMap model)
+	String productList(@RequestParam(value = "category", required = false) String category, @RequestParam(value = "sort", required = false) Integer sort, ModelMap model)
 	{
 		int s = sort == null ? 0 : sort;
 		List<Product> productList;

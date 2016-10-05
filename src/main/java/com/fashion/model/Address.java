@@ -1,11 +1,11 @@
 package com.fashion.model;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Min;
 
+import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.stereotype.Component;
 
 @Entity
@@ -13,15 +13,17 @@ import org.springframework.stereotype.Component;
 public class Address
 {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue
 	private int id;
-	private String email;
+
+	@NotBlank(message = "Street cannot be blank")
 	private String street;
+
+	@NotBlank(message = "City cannot be blank")
 	private String city;
+
+	@Min(0)
 	private int pin;
-	
-	@Column(name = "is_shipping")
-	private boolean isShipping;
 
 	public int getId()
 	{
@@ -31,16 +33,6 @@ public class Address
 	public void setId(int id)
 	{
 		this.id = id;
-	}
-
-	public String getEmail()
-	{
-		return email;
-	}
-
-	public void setEmail(String email)
-	{
-		this.email = email;
 	}
 
 	public String getStreet()
@@ -61,16 +53,6 @@ public class Address
 	public void setCity(String city)
 	{
 		this.city = city;
-	}
-
-	public boolean isShipping()
-	{
-		return isShipping;
-	}
-
-	public void setShipping(boolean isShipping)
-	{
-		this.isShipping = isShipping;
 	}
 
 	public int getPin()

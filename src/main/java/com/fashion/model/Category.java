@@ -1,10 +1,14 @@
 package com.fashion.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.Table;
-
+import javax.persistence.OneToMany;
+import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.stereotype.Component;
 
 @Entity
@@ -12,12 +16,28 @@ import org.springframework.stereotype.Component;
 public class Category
 {
 	@Id
+	@NotBlank(message = "Category ID cannot be blank")
 	private String id;
+
+	@NotBlank(message = "Category Name cannot be blank")
 	private String name;
 	private String description;
-	
+
 	@Column(name = "is_male")
-	private boolean isMale;
+	private boolean isMale = true;
+
+	@OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
+	private List<Product> products = new ArrayList<Product>();
+
+	public List<Product> getProducts()
+	{
+		return products;
+	}
+
+	public void setProducts(List<Product> products)
+	{
+		this.products = products;
+	}
 
 	public String getId()
 	{

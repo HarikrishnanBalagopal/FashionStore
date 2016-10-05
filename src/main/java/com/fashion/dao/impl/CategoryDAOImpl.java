@@ -6,7 +6,6 @@ import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,6 +15,9 @@ import com.fashion.model.Category;
 @Repository("categoryDAO")
 public class CategoryDAOImpl implements CategoryDAO
 {
+	@Autowired
+	Category category;
+
 	@Autowired
 	private SessionFactory sessionFactory;
 
@@ -30,28 +32,28 @@ public class CategoryDAOImpl implements CategoryDAO
 
 		switch(sortOrder)
 		{
-			case 0:
-				sort = "name";
-				break;
-			case 1:
-				sort = "is_male";
-				break;
-			case 2:
-				sort = "id";
-				break;
-			
-			default:
-				sort = "name";
+		case 0:
+			sort = "name";
+			break;
+		case 1:
+			sort = "is_male";
+			break;
+		case 2:
+			sort = "id";
+			break;
+
+		default:
+			sort = "name";
 		}
-		
+
 		return sort;
 	}
-	
+
 	@Transactional
 	public List<Category> list(int sortOrder)
 	{
-		
-		String hql = "from Category order by " + listHelper(sortOrder);		
+
+		String hql = "from Category order by " + listHelper(sortOrder);
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		@SuppressWarnings("unchecked")
 		List<Category> list = (List<Category>) query.list();
@@ -62,7 +64,7 @@ public class CategoryDAOImpl implements CategoryDAO
 	@Transactional
 	public List<Category> listFlag(boolean isMale, int sortOrder)
 	{
-		String hql = "from Category where is_male = " + isMale + " order by " + listHelper(sortOrder);
+		String hql = "from Category where isMale = " + isMale + " order by " + listHelper(sortOrder);
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		@SuppressWarnings("unchecked")
 		List<Category> list = (List<Category>) query.list();
@@ -73,32 +75,21 @@ public class CategoryDAOImpl implements CategoryDAO
 	@Transactional
 	public Category get(String id)
 	{
-		String hql = "from Category where id = '" + id + "'";
-		Query query = sessionFactory.getCurrentSession().createQuery(hql);
-		@SuppressWarnings("unchecked")
-		List<Category> list = (List<Category>) query.list();
-
-		if (list != null && !list.isEmpty())
-		{
-			return list.get(0);
-		}
-
-		return null;
+		return sessionFactory.getCurrentSession().get(Category.class, id);
 	}
-	
+
 	@Transactional
 	public boolean save(Category category)
 	{
 		try
 		{
 			sessionFactory.getCurrentSession().save(category);
-		}
-		catch(Exception e)
+		}catch(Exception e)
 		{
 			System.out.println("Exception on saving category: " + e);
 			return false;
 		}
-		
+
 		return true;
 	}
 
@@ -108,32 +99,29 @@ public class CategoryDAOImpl implements CategoryDAO
 		try
 		{
 			sessionFactory.getCurrentSession().update(category);
-		}
-		catch(Exception e)
+		}catch(Exception e)
 		{
 			System.out.println("Exception on updating category: " + e);
 			return false;
 		}
-		
+
 		return true;
 	}
 
 	@Transactional
 	public boolean delete(String id)
 	{
-		Category category = new Category();
 		category.setId(id);
-		
+
 		try
 		{
 			sessionFactory.getCurrentSession().delete(category);
-		}
-		catch(Exception e)
+		}catch(Exception e)
 		{
 			System.out.println("Exception on deleting category: " + e);
 			return false;
 		}
-		
+
 		return true;
 	}
 }

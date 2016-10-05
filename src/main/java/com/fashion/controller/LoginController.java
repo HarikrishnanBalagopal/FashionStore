@@ -24,13 +24,13 @@ public class LoginController
 	HttpSession session;
 	
 	@RequestMapping("/Login")
-	public ModelAndView login(@ModelAttribute("user") User user)
+	public ModelAndView login(@ModelAttribute User user)
 	{
 		return new ModelAndView("user/Login");
 	}
 	
 	@RequestMapping(value="/LoginAttempt", method = RequestMethod.POST)
-	public ModelAndView loginAttempt(@ModelAttribute("user") User user, ModelMap model)
+	public ModelAndView loginAttempt(@ModelAttribute User user, ModelMap model)
 	{
 		ModelAndView modelView = null;
 		

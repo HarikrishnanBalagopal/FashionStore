@@ -18,6 +18,7 @@
 			<table class="table">
 				<thead>
 					<tr>
+						<th></th>
 						<th>Image</th>
 						<th>Product Name</th>
 						<th>Price</th>
@@ -28,6 +29,7 @@
 				<tbody>
 					<c:forEach items="${orderList}" var="order">
 						<tr>
+							<td><a href="RemoveFromCart?id=${order.productID}"><i class="fa fa-times"></i></a></td>
 							<td><img src="resources/images/products/${order.productID}.jpg"></td>
 							<td>${order.productName}</td>
 							<td>${order.Price}</td>

@@ -15,6 +15,9 @@ import com.fashion.model.CardDetails;
 public class CardDetailsDAOImpl implements CardDetailsDAO
 {
 	@Autowired
+	CardDetails cardDetails;
+	
+	@Autowired
 	private SessionFactory sessionFactory;
 
 	public CardDetailsDAOImpl(SessionFactory sessionFactory)
@@ -26,35 +29,35 @@ public class CardDetailsDAOImpl implements CardDetailsDAO
 	public List<CardDetails> list(int sortOrder)
 	{
 		String sort = "email";
-		
+
 		switch(sortOrder)
 		{
-			case 0:
-				sort = "email";
-				break;
-			case 1:
-				sort = "cardNumber";
-				break;
-			case 2:
-				sort = "cvv";
-				break;
-			case 3:
-				sort = "expiryMonth";
-				break;
-			case 4:
-				sort = "expiryYear";
-				break;
-			case 5:
-				sort = "name";
-				break;
-			case 6:
-				sort = "id";
-				break;
-			default:
-				sort = "email";
+		case 0:
+			sort = "email";
+			break;
+		case 1:
+			sort = "cardNumber";
+			break;
+		case 2:
+			sort = "cvv";
+			break;
+		case 3:
+			sort = "expiryMonth";
+			break;
+		case 4:
+			sort = "expiryYear";
+			break;
+		case 5:
+			sort = "name";
+			break;
+		case 6:
+			sort = "id";
+			break;
+		default:
+			sort = "email";
 		}
-		
-		String hql = "from CardDetails order by " + sort;		
+
+		String hql = "from CardDetails order by " + sort;
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		@SuppressWarnings("unchecked")
 		List<CardDetails> list = (List<CardDetails>) query.list();
@@ -65,32 +68,21 @@ public class CardDetailsDAOImpl implements CardDetailsDAO
 	@Transactional
 	public CardDetails get(int id)
 	{
-		String hql = "from CardDetails where id = " + id;
-		Query query = sessionFactory.getCurrentSession().createQuery(hql);
-		@SuppressWarnings("unchecked")
-		List<CardDetails> list = (List<CardDetails>) query.list();
-
-		if (list != null && !list.isEmpty())
-		{
-			return list.get(0);
-		}
-
-		return null;
+		return sessionFactory.getCurrentSession().get(CardDetails.class, id);
 	}
-	
+
 	@Transactional
 	public boolean save(CardDetails cardDetails)
 	{
 		try
 		{
 			sessionFactory.getCurrentSession().save(cardDetails);
-		}
-		catch(Exception e)
+		}catch(Exception e)
 		{
 			System.out.println("Exception on saving card details: " + e);
 			return false;
 		}
-		
+
 		return true;
 	}
 
@@ -100,32 +92,29 @@ public class CardDetailsDAOImpl implements CardDetailsDAO
 		try
 		{
 			sessionFactory.getCurrentSession().update(cardDetails);
-		}
-		catch(Exception e)
+		}catch(Exception e)
 		{
 			System.out.println("Exception on updating card details: " + e);
 			return false;
 		}
-		
+
 		return true;
 	}
 
 	@Transactional
 	public boolean delete(int id)
 	{
-		CardDetails cardDetails = new CardDetails();
 		cardDetails.setId(id);
-		
+
 		try
 		{
 			sessionFactory.getCurrentSession().delete(cardDetails);
-		}
-		catch(Exception e)
+		}catch(Exception e)
 		{
 			System.out.println("Exception on deleting card details: " + e);
 			return false;
 		}
-		
+
 		return true;
 	}
 }

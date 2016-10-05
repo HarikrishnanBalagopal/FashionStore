@@ -5,19 +5,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class DefaultController
-{	
+{
 	@RequestMapping("/Home")
 	public String home()
 	{
 		return "../../index";
 	}
-	
+
 	@RequestMapping("/AboutUs")
 	public String aboutUs()
 	{
 		return "user/AboutUs";
 	}
-	
+
 	@RequestMapping("/ContactUs")
 	public String contactUs()
 	{

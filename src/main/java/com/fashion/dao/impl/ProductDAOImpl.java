@@ -15,6 +15,9 @@ import com.fashion.model.Product;
 public class ProductDAOImpl implements ProductDAO
 {
 	@Autowired
+	Product product;
+
+	@Autowired
 	private SessionFactory sessionFactory;
 
 	public ProductDAOImpl(SessionFactory sessionFactory)
@@ -25,49 +28,49 @@ public class ProductDAOImpl implements ProductDAO
 	private String listHelper(int sortOrder)
 	{
 		String sort = "name";
-		
+
 		switch(sortOrder)
 		{
-			case 0:
-				sort = "name";
-				break;
-			case 1:
-				sort = "price";
-				break;
-			case 2:
-				sort = "quantity";
-				break;
-			case 3:
-				sort = "category_id";
-				break;
-			case 4:
-				sort = "supplier_id";
-				break;
-			case 5:
-				sort = "id";
-				break;
-			default:
-				sort = "name";
+		case 0:
+			sort = "name";
+			break;
+		case 1:
+			sort = "price";
+			break;
+		case 2:
+			sort = "quantity";
+			break;
+		case 3:
+			sort = "category_id";
+			break;
+		case 4:
+			sort = "supplier_id";
+			break;
+		case 5:
+			sort = "id";
+			break;
+		default:
+			sort = "name";
 		}
-		
+
 		return sort;
 	}
-	
+
 	@Transactional
 	public List<Product> list(int sortOrder)
-	{	
-		String hql = "from Product order by " + listHelper(sortOrder);		
+	{
+		String hql = "from Product order by " + listHelper(sortOrder);
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		@SuppressWarnings("unchecked")
 		List<Product> list = (List<Product>) query.list();
 
 		return list;
 	}
-	
+
 	@Transactional
-	public List<Product> listByCategory(int categoryID, int sortOrder)
+	public List<Product> listByCategory(String categoryID, int sortOrder)
 	{
-		String hql = "from Product where categoryID = '" + categoryID + "' order by " + listHelper(sortOrder);		
+		String hql = "from Product where category = '" + categoryID + "' order by " + listHelper(sortOrder);
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		@SuppressWarnings("unchecked")
 		List<Product> list = (List<Product>) query.list();
@@ -78,32 +81,21 @@ public class ProductDAOImpl implements ProductDAO
 	@Transactional
 	public Product get(String id)
 	{
-		String hql = "from Product where id = '" + id + "'";
-		Query query = sessionFactory.getCurrentSession().createQuery(hql);
-		@SuppressWarnings("unchecked")
-		List<Product> list = (List<Product>) query.list();
-
-		if (list != null && !list.isEmpty())
-		{
-			return list.get(0);
-		}
-
-		return null;
+		return sessionFactory.getCurrentSession().get(Product.class, id);
 	}
-	
+
 	@Transactional
 	public boolean save(Product product)
 	{
 		try
 		{
 			sessionFactory.getCurrentSession().save(product);
-		}
-		catch(Exception e)
+		}catch(Exception e)
 		{
 			System.out.println("Exception on saving product: " + e);
 			return false;
 		}
-		
+
 		return true;
 	}
 
@@ -113,32 +105,29 @@ public class ProductDAOImpl implements ProductDAO
 		try
 		{
 			sessionFactory.getCurrentSession().update(product);
-		}
-		catch(Exception e)
+		}catch(Exception e)
 		{
 			System.out.println("Exception on updating product: " + e);
 			return false;
 		}
-		
+
 		return true;
 	}
 
 	@Transactional
 	public boolean delete(String id)
 	{
-		Product product = new Product();
 		product.setId(id);
-		
+
 		try
 		{
 			sessionFactory.getCurrentSession().delete(product);
-		}
-		catch(Exception e)
+		}catch(Exception e)
 		{
 			System.out.println("Exception on deleting product: " + e);
 			return false;
 		}
-		
+
 		return true;
 	}
 }

@@ -15,17 +15,20 @@ import com.fashion.model.Order;
 public class OrderDAOImpl implements OrderDAO
 {
 	@Autowired
+	Order order;
+
+	@Autowired
 	private SessionFactory sessionFactory;
-	
+
 	public OrderDAOImpl(SessionFactory sessionFactory)
 	{
 		this.sessionFactory = sessionFactory;
 	}
-	
+
 	@Transactional
 	public List<Order> list()
-	{	
-		String hql = "from Order";		
+	{
+		String hql = "from Order";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		@SuppressWarnings("unchecked")
 		List<Order> list = (List<Order>) query.list();
@@ -36,47 +39,21 @@ public class OrderDAOImpl implements OrderDAO
 	@Transactional
 	public Order get(int id)
 	{
-		String hql = "from Order where id = " + id;
-		Query query = sessionFactory.getCurrentSession().createQuery(hql);
-		@SuppressWarnings("unchecked")
-		List<Order> list = (List<Order>) query.list();
-
-		if (list != null && !list.isEmpty())
-		{
-			return list.get(0);
-		}
-
-		return null;
+		return sessionFactory.getCurrentSession().get(Order.class, id);
 	}
-	
-	public String byEmail(String email)
-	{
-		return "from Order where email = '" + email + "'";
 
-	}
-	
-	@Transactional
-	public List<Order> getAll(String hql)
-	{
-		Query query = sessionFactory.getCurrentSession().createQuery(hql);
-		@SuppressWarnings("unchecked")
-		List<Order> list = (List<Order>) query.list();
-		return list;
-	}
-	
 	@Transactional
 	public boolean save(Order order)
 	{
 		try
 		{
 			sessionFactory.getCurrentSession().save(order);
-		}
-		catch(Exception e)
+		}catch(Exception e)
 		{
 			System.out.println("Exception on saving order: " + e);
 			return false;
 		}
-		
+
 		return true;
 	}
 
@@ -86,32 +63,29 @@ public class OrderDAOImpl implements OrderDAO
 		try
 		{
 			sessionFactory.getCurrentSession().update(order);
-		}
-		catch(Exception e)
+		}catch(Exception e)
 		{
 			System.out.println("Exception on updating order: " + e);
 			return false;
 		}
-		
+
 		return true;
 	}
 
 	@Transactional
 	public boolean delete(int id)
 	{
-		Order order = new Order();
 		order.setId(id);
-		
+
 		try
 		{
 			sessionFactory.getCurrentSession().delete(order);
-		}
-		catch(Exception e)
+		}catch(Exception e)
 		{
 			System.out.println("Exception on deleting order: " + e);
 			return false;
 		}
-		
+
 		return true;
 	}
 }

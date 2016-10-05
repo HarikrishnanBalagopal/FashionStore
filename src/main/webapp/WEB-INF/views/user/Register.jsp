@@ -31,17 +31,16 @@
 					</div>
 					<div class="panel-body">
 						<form:form action="RegisterAttempt" method="POST"
-							modelAttribute="userDetails" role="form">
+							modelAttribute="user" role="form">
 							<div class="form-group">
-								<form:label path="user.firstName">First Name *</form:label>
-								<form:input path="user.firstName" type="text"
-									class="form-control" name="firstName" autofocus="autofocus"
-									required="required" />
+								<form:label path="firstName">First Name *</form:label>
+								<form:input path="firstName" type="text" class="form-control"
+									name="firstName" autofocus="autofocus" required="required" />
 							</div>
 							<div class="form-group">
-								<form:label path="user.lastName">Last Name *</form:label>
-								<form:input path="user.lastName" type="text"
-									class="form-control" name="lastName" required="required" />
+								<form:label path="lastName">Last Name *</form:label>
+								<form:input path="lastName" type="text" class="form-control"
+									name="lastName" required="required" />
 							</div>
 							<div class="form-group">
 								Shipping Address *
@@ -67,38 +66,40 @@
 									class="form-control" name="billingAddressPin"
 									required="required" />
 							</div>
+							<c:forEach items="${cardDetails}" var="card">
+								<div class="form-group">
+									Credit Card details *
+									<form:label path="card.cardNumber">Card Number *</form:label>
+									<form:input path="card.cardNumber" type="text"
+										class="form-control" name="cardNumber" required="required" />
+									<form:label path="card.name">Name on card *</form:label>
+									<form:input path="card.name" type="text" class="form-control"
+										name="name" required="required" />
+									<form:label path="card.cvv">CVV *</form:label>
+									<form:input path="card.cvv" type="text" class="form-control"
+										name="cvv" required="required" />
+									<form:label path="card.expiryMonth">Expiry Month *</form:label>
+									<form:input path="card.expiryMonth" type="text"
+										class="form-control" name="expiryMonth" required="required" />
+									<form:label path="card.expiryYear">Expiry Year *</form:label>
+									<form:input path="card.expiryYear" type="text"
+										class="form-control" name="expiryYear" required="required" />
+								</div>
+							</c:forEach>
 							<div class="form-group">
-								Credit Card details *
-								<form:label path="cardDetails.cardNumber">Card Number *</form:label>
-								<form:input path="cardDetails.cardNumber" type="text"
-									class="form-control" name="cardNumber" required="required" />
-								<form:label path="cardDetails.name">Name on card *</form:label>
-								<form:input path="cardDetails.name" type="text"
-									class="form-control" name="name" required="required" />
-								<form:label path="cardDetails.cvv">CVV *</form:label>
-								<form:input path="cardDetails.cvv" type="text"
-									class="form-control" name="cvv" required="required" />
-								<form:label path="cardDetails.expiryMonth">Expiry Month *</form:label>
-								<form:input path="cardDetails.expiryMonth" type="text"
-									class="form-control" name="expiryMonth" required="required" />
-								<form:label path="cardDetails.expiryYear">Expiry Year *</form:label>
-								<form:input path="cardDetails.expiryYear" type="text"
-									class="form-control" name="expiryYear" required="required" />
+								<form:label path="contactNo">Phone Number *</form:label>
+								<form:input path="contactNo" type="text" class="form-control"
+									name="phoneNumber" required="required" />
 							</div>
 							<div class="form-group">
-								<form:label path="user.contactNo">Phone Number *</form:label>
-								<form:input path="user.contactNo" type="text"
-									class="form-control" name="phoneNumber" required="required" />
-							</div>
-							<div class="form-group">
-								<form:label path="user.email">Enter Email * ${error}</form:label>
-								<form:input path="user.email" type="email" class="form-control"
+								<form:label path="email">Enter Email * ${error}</form:label>
+								<form:input path="email" type="email" class="form-control"
 									name="email" required="required" />
 							</div>
 							<div class="form-group">
-								<form:label path="user.password">Password *</form:label>
-								<form:input path="user.password" type="password"
-									class="form-control" name="password" required="required" />
+								<form:label path="password">Password *</form:label>
+								<form:input path="password" type="password" class="form-control"
+									name="password" required="required" />
 							</div>
                     * <small>Required Fields</small>
 							<button type="submit" class="btn btn-primary btn-block">Submit</button>

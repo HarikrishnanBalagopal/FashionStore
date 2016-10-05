@@ -2,11 +2,14 @@ package com.fashion.model;
 
 import java.math.BigDecimal;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Transient;
+import javax.validation.constraints.Min;
 
+import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -15,17 +18,46 @@ import org.springframework.web.multipart.MultipartFile;
 public class Product
 {
 	@Id
+	@NotBlank(message = "Product ID cannot be blank")
 	private String id;
+
+	@NotBlank(message = "Product Name cannot be blank")
 	private String name;
 	private String description;
+
+	@Min(0)
 	private BigDecimal price;
+
+	@Min(0)
 	private int quantity;
 
-	@Column(name = "category_id")
-	private String categoryID;
+	@ManyToOne
+	@JoinColumn(name = "category_id", nullable = false, insertable = false, updatable = false)
+	private Category category;
 
-	@Column(name = "supplier_id")
-	private String supplierID;
+	@ManyToOne
+	@JoinColumn(name = "supplier_id", nullable = false, insertable = false, updatable = false)
+	private Supplier supplier;
+
+	public Category getCategory()
+	{
+		return category;
+	}
+
+	public void setCategory(Category category)
+	{
+		this.category = category;
+	}
+
+	public Supplier getSupplier()
+	{
+		return supplier;
+	}
+
+	public void setSupplier(Supplier supplier)
+	{
+		this.supplier = supplier;
+	}
 
 	@Transient
 	private MultipartFile image;
@@ -78,26 +110,6 @@ public class Product
 	public void setQuantity(int quantity)
 	{
 		this.quantity = quantity;
-	}
-
-	public String getCategoryID()
-	{
-		return categoryID;
-	}
-
-	public void setCategoryID(String categoryID)
-	{
-		this.categoryID = categoryID;
-	}
-
-	public String getSupplierID()
-	{
-		return supplierID;
-	}
-
-	public void setSupplierID(String supplierID)
-	{
-		this.supplierID = supplierID;
 	}
 
 	public MultipartFile getImage()

@@ -10,10 +10,6 @@ public interface OrderDAO
 
 	public Order get(int id);
 
-	public String byEmail(String email);
-	
-	public List<Order> getAll(String hql);
-	
 	public boolean save(Order order);
 
 	public boolean update(Order order);

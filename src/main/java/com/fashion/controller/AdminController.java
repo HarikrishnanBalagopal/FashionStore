@@ -272,7 +272,7 @@ public class AdminController
 	}
 	
 	@RequestMapping("/AdminProductList")
-	public ModelAndView adminProductList(@RequestParam(value = "category", required = false) Integer category, @RequestParam(value = "sort", required = false) Integer sort, ModelMap model)
+	public ModelAndView adminProductList(@RequestParam(value = "category", required = false) String category, @RequestParam(value = "sort", required = false) Integer sort, ModelMap model)
 	{
 		ModelAndView modelView = new ModelAndView("admin/AdminHome");
 		int s = sort != null ? sort : 0;
