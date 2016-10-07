@@ -30,24 +30,47 @@
 						<h3>sign up</h3>
 					</div>
 					<div class="panel-body">
-						<form:form action="RegisterAttempt" method="POST"
-							modelAttribute="user" role="form">
+						<form:form method="POST" modelAttribute="user" role="form">
 							<div class="form-group">
 								<form:label path="firstName">First Name *</form:label>
 								<form:input path="firstName" type="text" class="form-control"
 									name="firstName" autofocus="autofocus" required="required" />
+								<c:forEach
+									items="${flowRequestContext.messageContext.getMessagesBySource('firstName')}"
+									var="err">
+									<div>
+										<span>${err.text}</span>
+									</div>
+								</c:forEach>
+								<br />
 							</div>
 							<div class="form-group">
 								<form:label path="lastName">Last Name *</form:label>
 								<form:input path="lastName" type="text" class="form-control"
 									name="lastName" required="required" />
+								<c:forEach
+									items="${flowRequestContext.messageContext.getMessagesBySource('lastName')}"
+									var="err">
+									<div>
+										<span>${err.text}</span>
+									</div>
+								</c:forEach>
+								<br />
 							</div>
 							<div class="form-group">
-								Shipping Address *
+								<strong>Shipping Address *</strong><br />
 								<form:label path="shippingAddress.street">Street *</form:label>
 								<form:input path="shippingAddress.street" type="text"
 									class="form-control" name="shippingAddressStreet"
 									required="required" />
+								<c:forEach
+									items="${flowRequestContext.messageContext.getMessagesBySource('shippingAddressStreet')}"
+									var="err">
+									<div>
+										<span>${err.text}</span>
+									</div>
+								</c:forEach>
+								<br />
 								<form:select path="shippingAddress.city" items="${cityList}" />
 								<form:label path="shippingAddress.pin">Zip Code *</form:label>
 								<form:input path="shippingAddress.pin" type="text"
@@ -55,54 +78,109 @@
 									required="required" />
 							</div>
 							<div class="form-group">
-								Billing Address *
+								<strong>Billing Address *</strong><br />
 								<form:label path="billingAddress.street">Street *</form:label>
 								<form:input path="billingAddress.street" type="text"
 									class="form-control" name="billingAddressStreet"
 									required="required" />
+								<c:forEach
+									items="${flowRequestContext.messageContext.getMessagesBySource('billingAddressStreet')}"
+									var="err">
+									<div>
+										<span>${err.text}</span>
+									</div>
+								</c:forEach>
+								<br />
 								<form:select path="billingAddress.city" items="${cityList}" />
 								<form:label path="billingAddress.pin">Zip Code *</form:label>
 								<form:input path="billingAddress.pin" type="text"
 									class="form-control" name="billingAddressPin"
 									required="required" />
 							</div>
-							<c:forEach items="${cardDetails}" var="card">
-								<div class="form-group">
-									Credit Card details *
-									<form:label path="card.cardNumber">Card Number *</form:label>
-									<form:input path="card.cardNumber" type="text"
-										class="form-control" name="cardNumber" required="required" />
-									<form:label path="card.name">Name on card *</form:label>
-									<form:input path="card.name" type="text" class="form-control"
-										name="name" required="required" />
-									<form:label path="card.cvv">CVV *</form:label>
-									<form:input path="card.cvv" type="text" class="form-control"
-										name="cvv" required="required" />
-									<form:label path="card.expiryMonth">Expiry Month *</form:label>
-									<form:input path="card.expiryMonth" type="text"
-										class="form-control" name="expiryMonth" required="required" />
-									<form:label path="card.expiryYear">Expiry Year *</form:label>
-									<form:input path="card.expiryYear" type="text"
-										class="form-control" name="expiryYear" required="required" />
-								</div>
-							</c:forEach>
+							<div class="form-group">
+								<strong>Credit Card details *</strong><br />
+								<form:label path="cardDetails[0].cardNumber">Card Number *</form:label>
+								<form:input path="cardDetails[0].cardNumber" type="text"
+									class="form-control" name="cardNumber" required="required" />
+								<c:forEach
+									items="${flowRequestContext.messageContext.getMessagesBySource('cardNumber')}"
+									var="err">
+									<div>
+										<span>${err.text}</span>
+									</div>
+								</c:forEach>
+								<br />
+								<form:label path="cardDetails[0].name">Name on card *</form:label>
+								<form:input path="cardDetails[0].name" type="text"
+									class="form-control" name="name" required="required" />
+								<c:forEach
+									items="${flowRequestContext.messageContext.getMessagesBySource('name')}"
+									var="err">
+									<div>
+										<span>${err.text}</span>
+									</div>
+								</c:forEach>
+								<br />
+								<form:label path="cardDetails[0].cvv">CVV *</form:label>
+								<form:input path="cardDetails[0].cvv" type="text"
+									class="form-control" name="cvv" required="required" />
+								<c:forEach
+									items="${flowRequestContext.messageContext.getMessagesBySource('cvv')}"
+									var="err">
+									<div>
+										<span>${err.text}</span>
+									</div>
+								</c:forEach>
+								<br />
+								<form:label path="cardDetails[0].expiryMonth">Expiry Month *</form:label>
+								<form:input path="cardDetails[0].expiryMonth" type="text"
+									class="form-control" name="expiryMonth" required="required" />
+								<form:label path="cardDetails[0].expiryYear">Expiry Year *</form:label>
+								<form:input path="cardDetails[0].expiryYear" type="text"
+									class="form-control" name="expiryYear" required="required" />
+							</div>
 							<div class="form-group">
 								<form:label path="contactNo">Phone Number *</form:label>
 								<form:input path="contactNo" type="text" class="form-control"
 									name="phoneNumber" required="required" />
+								<c:forEach
+									items="${flowRequestContext.messageContext.getMessagesBySource('contactNo')}"
+									var="err">
+									<div>
+										<span>${err.text}</span>
+									</div>
+								</c:forEach>
+								<br />
 							</div>
 							<div class="form-group">
 								<form:label path="email">Enter Email * ${error}</form:label>
 								<form:input path="email" type="email" class="form-control"
 									name="email" required="required" />
+								<c:forEach
+									items="${flowRequestContext.messageContext.getMessagesBySource('email')}"
+									var="err">
+									<div>
+										<span>${err.text}</span>
+									</div>
+								</c:forEach>
+								<br />
 							</div>
 							<div class="form-group">
 								<form:label path="password">Password *</form:label>
 								<form:input path="password" type="password" class="form-control"
 									name="password" required="required" />
+								<c:forEach
+									items="${flowRequestContext.messageContext.getMessagesBySource('password')}"
+									var="err">
+									<div>
+										<span>${err.text}</span>
+									</div>
+								</c:forEach>
+								<br />
 							</div>
                     * <small>Required Fields</small>
-							<button type="submit" class="btn btn-primary btn-block">Submit</button>
+							<button name="_eventId_submit" type="submit"
+								class="btn btn-primary btn-block">Submit</button>
 							<button type="button" class="btn btn-link btn-block">
 								<span>Already have an account?</span> Log in
 							</button>

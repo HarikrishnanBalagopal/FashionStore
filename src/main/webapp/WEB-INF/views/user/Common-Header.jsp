@@ -37,7 +37,7 @@
 							<c:choose>
 								<c:when test="${empty isLoggedIn}">
 									<li><span><a href="Login">Log in</a> <small>or</small>
-											<a href="Register">Create an account</a></span></li>
+											<a href="Registration.obj">Create an account</a></span></li>
 								</c:when>
 								<c:otherwise>
 									<li><a href="AccountHome">Welcome ${email} |</a> <a href="LogOut">Log Out</a></li>
@@ -111,7 +111,7 @@
 		<div class="collapse navbar-collapse navbar-ex1-collapse">
 			<ul class="nav navbar-nav navbar-right">
 				<li id="LinkHome"><a href="Home">Home</a></li>
-				<li id="LinkRegister"><a href="Register">Register</a></li>
+				<li id="LinkRegister"><a href="Registration.obj">Register</a></li>
 				<li id="LinkLogin"><a href="Login">Login</a></li>
 				<li id="LinkAboutUs"><a href="AboutUs">About Us</a></li>
 				<li id="LinkContactUs"><a href="ContactUs">Contact Us</a></li>

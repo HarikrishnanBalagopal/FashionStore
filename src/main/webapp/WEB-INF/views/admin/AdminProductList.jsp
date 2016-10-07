@@ -145,8 +145,8 @@
 										<p>${product.description}</p>
 										<h3>$${product.price}</h3>
 										<ul class="list-inline">
-											<li><h4>Category ID:${product.categoryID}</h4></li>
-											<li><h4>Supplier ID:${product.supplierID}</h4></li>
+											<li><h4>Category:${product.category.name}</h4></li>
+											<li><h4>Supplier:${product.supplier.name}</h4></li>
 										</ul>
 
 										<div class="btn-group" role="group">

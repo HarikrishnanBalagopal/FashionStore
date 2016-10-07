@@ -2774,7 +2774,7 @@ body.bodyColor.container {
     background-position: center center;
     height: auto;
     height: 200px;
-    background-image: url(../img/products/page-header-image.jpg);
+    background-image: url("/FashionStore/resources/images/page-header-image.jpg");
 }
 
 .pageHeaderImage .tableBlock {
@@ -3737,6 +3737,11 @@ body.bodyColor.container {
 .cartListInner .table-responsive .table tbody tr td .cartImage {
     display: inline-block;
     float: left;
+}
+
+.cartImage img
+{
+	width: 64px;
 }
 
 .cartListInner .table-responsive .table tbody tr td:nth-child(3) {

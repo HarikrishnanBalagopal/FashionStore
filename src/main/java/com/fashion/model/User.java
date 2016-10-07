@@ -1,5 +1,6 @@
 package com.fashion.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,8 +18,13 @@ import org.springframework.stereotype.Component;
 
 @Entity
 @Component
-public class User
+public class User implements Serializable
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4325274094019215286L;
+
 	@Id
 	@NotBlank(message = "Email cannot be blank")
 	private String email;
@@ -43,16 +49,16 @@ public class User
 
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "shipping_id", nullable = false)
-	private Address shippingAddress;
+	private Address shippingAddress = new Address();
 
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "billing_id", nullable = false)
-	private Address billingAddress;
+	private Address billingAddress = new Address();
 
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
 	private List<CardDetails> cardDetails = new ArrayList<CardDetails>();
 
-	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "user", orphanRemoval=true, cascade = CascadeType.ALL, fetch=FetchType.EAGER)
 	private List<Order> orders = new ArrayList<Order>();
 
 	public List<Order> getOrders()

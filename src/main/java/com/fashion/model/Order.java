@@ -1,5 +1,7 @@
 package com.fashion.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -14,18 +16,23 @@ import org.springframework.stereotype.Component;
 @Entity
 @Table(name = "order_details")
 @Component
-public class Order
+public class Order implements Serializable
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2214257723777816399L;
+
 	@Id
 	@GeneratedValue
 	private int id;
 
 	@ManyToOne
-	@JoinColumn(name = "email", nullable = false, insertable = false, updatable = false)
+	@JoinColumn(name = "email", nullable = false)
 	private User user;
 
 	@ManyToOne
-	@JoinColumn(name = "product_id", nullable = false, insertable = false, updatable = false)
+	@JoinColumn(name = "product_id", nullable = false)
 	private Product product;
 
 	@Min(1)
@@ -33,6 +40,20 @@ public class Order
 
 	@NotBlank(message = "Status cannot be blank")
 	private String status;
+
+	@Override
+	public boolean equals(Object object)
+	{
+		Order o = (Order) object;
+		return o.getId() == id;
+	}
+
+	@Override
+	public String toString()
+	{
+		return "Order: ID:" + id + ", User:" + user + ", Product:" + product + ", Quantity:" + quantity
+				+ ", Status:" + status;
+	}
 
 	public User getUser()
 	{

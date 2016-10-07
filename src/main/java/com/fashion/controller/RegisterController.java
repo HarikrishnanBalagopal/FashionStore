@@ -1,8 +1,5 @@
 package com.fashion.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,23 +21,6 @@ public class RegisterController
 
 	@Autowired
 	HttpSession session;
-
-	private static List<String> cityList = new ArrayList<String>();
-
-	public RegisterController()
-	{
-		cityList.add("city0");
-		cityList.add("city1");
-		cityList.add("city2");
-		cityList.add("city3");
-	}
-
-	@RequestMapping("/Register")
-	public String register(@ModelAttribute User user, ModelMap model)
-	{
-		model.addAttribute("cityList", cityList);
-		return "user/Register";
-	}
 
 	@RequestMapping(value = "/RegisterAttempt", method = RequestMethod.POST)
 	public ModelAndView registerAttempt(@ModelAttribute("user") User user, ModelMap model)
