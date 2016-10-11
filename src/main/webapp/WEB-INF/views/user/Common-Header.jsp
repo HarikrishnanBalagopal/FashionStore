@@ -1,4 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -40,7 +42,22 @@
 											<a href="Registration.obj">Create an account</a></span></li>
 								</c:when>
 								<c:otherwise>
-									<li><a href="AccountHome">Welcome ${email} |</a> <a href="LogOut">Log Out</a></li>
+									<li><a href="AccountHome">Welcome ${email} |</a> <sec:authorize
+											access="hasAnyRole('ROLE_ADMIN', 'ROLE_USER')">
+											<!-- For login user -->
+											<c:url value="/j_spring_security_logout" var="logoutUrl" />
+											<form action="${logoutUrl}" method="post" id="logoutForm">
+												<input type="hidden" name="${_csrf.parameterName}"
+													value="${_csrf.token}" />
+											</form>
+											<script>
+												function formSubmit() {
+													document.getElementById(
+															"logoutForm")
+															.submit();
+												}
+											</script><a href="javascript:formSubmit()"> Logout</a>
+											</sec:authorize></li>
 								</c:otherwise>
 							</c:choose>
 							<li class="dropdown searchBox"><a href="#"
@@ -54,34 +71,28 @@
 									</span></li>
 								</ul></li>
 							<li class="dropdown"><a href="#" class="dropdown-toggle"
-								data-toggle="dropdown"><i class="fa fa-shopping-cart hicon"></i>$0</a>
+								data-toggle="dropdown"><i class="fa fa-shopping-cart hicon"></i>$${total}</a>
 								<ul class="dropdown-menu dropdown-menu-right">
 									<li>Item(s) in your cart</li>
-									<li><a href="#">
-											<div class="media">
-												<img class="media-left media-object"
-													src="resources/images/cart-item-01.jpg" alt="cart-Image">
-												<div class="media-body">
-													<h5 class="media-heading">
-														INCIDIDUNT UT <br> <span>2 X $199</span>
-													</h5>
+									<c:forEach items="${orderList}" var="order" varStatus="status">
+										<li><a href="#">
+												<div class="media">
+													<img class="media-left media-object"
+														src="resources/images/products/${productList[status.index].id}.jpg"
+														alt="cart-Image">
+													<div class="media-body">
+														<h5 class="media-heading">
+															${productList[status.index].name} <br> <span>${order.quantity}
+																X $${productList[status.index].price}</span>
+														</h5>
+													</div>
 												</div>
-											</div>
-									</a></li>
-									<li><a href="#">
-											<div class="media">
-												<img class="media-left media-object"
-													src="resources/images/cart-item-01.jpg" alt="cart-Image">
-												<div class="media-body">
-													<h5 class="media-heading">
-														INCIDIDUNT UT <br> <span>2 X $199</span>
-													</h5>
-												</div>
-											</div>
-									</a></li>
+										</a></li>
+									</c:forEach>
 									<li>
 										<div class="btn-group" role="group" aria-label="...">
-											<button type="button" class="btn btn-default" onclick="location.href='/FashionStore/Cart'">Shopping
+											<button type="button" class="btn btn-default"
+												onclick="location.href='/FashionStore/Cart'">Shopping
 												Cart</button>
 											<button type="button" class="btn btn-default">Checkout</button>
 										</div>

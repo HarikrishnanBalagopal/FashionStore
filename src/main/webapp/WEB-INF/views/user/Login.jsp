@@ -28,14 +28,16 @@
 						<h3>log in</h3>
 					</div>
 					<div class="panel-body">
-						<form:form action="LoginAttempt" method="POST" modelAttribute="user" role="form">
+						<form action="
+							<c:url value='/j_spring_security_check' />"
+							method="POST" role="form">
 							<div class="form-group">
-								<form:label path="email">Enter Email</form:label>
-								<form:input path="email" type="email" class="form-control" autofocus="autofocus" required="required"/>
+								<label>Enter Email</label> <input type="email" name="email"
+									class="form-control" autofocus="autofocus" required="required" />
 							</div>
 							<div class="form-group">
-								<form:label path="password">Password</form:label>
-								<form:input path="password" type="password" class="form-control"/>
+								<label>Password</label> <input type="password" name="password"
+									class="form-control" />
 							</div>
 							<div class="checkbox">
 								<label> <input type="checkbox"> Remember Me
@@ -45,7 +47,9 @@
 								in</button>
 							<button type="button" class="btn btn-link btn-block">Forgot
 								Password?</button>
-						</form:form>
+							<input type="hidden" name="${_csrf.parameterName}"
+								value="${_csrf.token}" />
+						</form>
 					</div>
 				</div>
 			</div>

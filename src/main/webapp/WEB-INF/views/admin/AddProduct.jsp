@@ -19,8 +19,10 @@
 								<form:input path="name" type="text" class="form-control"
 									required="required" />
 							</div>
-							<form:radiobuttons path="category.id" items="${categoryList}"
-								required="required" />
+							<div class="form-group">
+								<form:radiobuttons path="category.id" items="${categoryList}"
+									required="required" />
+							</div>
 							<div class="form-group">
 								<form:label path="description">Description</form:label>
 								<form:textarea rows="20" cols="40" path="description"
@@ -31,10 +33,12 @@
 								<form:input path="price" type="text" class="form-control"
 									required="" />
 							</div>
-							<form:label path="quantity">Quantity *</form:label>
-							<form:input path="quantity" type="text" class="form-control"
-								required="required" />
-							<form:select path="supplier.id" items="${supplierList}" />
+							<div class="form-group">
+								<form:label path="quantity">Quantity *</form:label>
+								<form:input path="quantity" type="text" class="form-control"
+									required="required" />
+								<form:select path="supplier.id" items="${supplierList}" />
+							</div>
 
 							<form:label path="image">Image</form:label>
 							<form:input type="file" path="image" />

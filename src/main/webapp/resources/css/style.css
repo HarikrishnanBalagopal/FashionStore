@@ -5773,6 +5773,28 @@ body.bodyColor.container {
 {
 	color:#000000;
 }
+a.btn.primary-btn.customBtn
+{
+    background: rgba(0, 0, 0, 0);
+    border-radius: 0;
+    padding: 10px;
+    font-size: large;
+    font-weight: 400;
+    color: white;
+    border: 4px solid #47bac1;
+    transition: .3s all ease-in-out;
+}
+.carousel-caption h1
+{
+	color: white;
+}
+.carousel-caption p
+{
+	color: white;
+}
+a.btn.primary-btn.customBtn:hover{
+    background: #47bac1;
+}
 #addProduct
 {
 	    background: url("/FashionStore/resources/images/admin-home/add-product-bg.jpg") center no-repeat;

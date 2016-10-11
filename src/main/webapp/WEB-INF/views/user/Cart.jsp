@@ -74,7 +74,7 @@
 						</div>
 
 						<div class="checkBtnArea">
-							<a href="checkout-step-1.html" class="btn btn-primary btn-block">checkout<i
+							<a href="CheckOut.obj" class="btn btn-primary btn-block">checkout<i
 								class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
 						</div>
 					</form>

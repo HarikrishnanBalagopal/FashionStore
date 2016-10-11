@@ -15,16 +15,13 @@
 			<div class="container">
 				<div class="carousel-caption">
 					<h1>Example headline.</h1>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+						Vestibulum id eros et purus efficitur porttitor quis rhoncus
+						nulla. Nunc faucibus dui ac magna lacinia, quis viverra dui
+						suscipit. Etiam eu suscipit lectus.</p>
 					<p>
-						Note: If you're viewing this page via a
-						<code>file://</code>
-						URL, the "next" and "previous" Glyphicon buttons on the left and
-						right might not load/display properly due to web browser security
-						rules.
-					</p>
-					<p>
-						<a class="btn btn-lg btn-primary" href="#" role="button">Sign
-							up today</a>
+						<a class="btn primary-btn customBtn" href="Registration.obj"
+							role="button">Sign up today</a>
 					</p>
 				</div>
 			</div>
@@ -39,7 +36,7 @@
 						Donec id elit non mi porta gravida at eget metus. Nullam id dolor
 						id nibh ultricies vehicula ut id elit.</p>
 					<p>
-						<a class="btn btn-lg btn-primary" href="#" role="button">Learn
+						<a class="btn primary-btn customBtn" href="#" role="button">Learn
 							more</a>
 					</p>
 				</div>
@@ -55,7 +52,7 @@
 						Donec id elit non mi porta gravida at eget metus. Nullam id dolor
 						id nibh ultricies vehicula ut id elit.</p>
 					<p>
-						<a class="btn btn-lg btn-primary" href="#" role="button">Browse
+						<a class="btn primary-btn customBtn" href="#" role="button">Browse
 							gallery</a>
 					</p>
 				</div>

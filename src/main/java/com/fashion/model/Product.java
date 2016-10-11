@@ -1,5 +1,6 @@
 package com.fashion.model;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 import javax.persistence.Entity;
@@ -15,8 +16,13 @@ import org.springframework.web.multipart.MultipartFile;
 
 @Entity
 @Component
-public class Product
+public class Product implements Serializable
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3423440626604460526L;
+
 	@Id
 	@NotBlank(message = "Product ID cannot be blank")
 	private String id;

@@ -51,6 +51,12 @@ public class AdminController
 		return "redirect:/AccountHome";
 	}
 	
+	@RequestMapping("/403")
+	public String accessDenied()
+	{
+		return "403";
+	}
+	
 	@RequestMapping("/AccountHome")
 	public String accountHome()
 	{

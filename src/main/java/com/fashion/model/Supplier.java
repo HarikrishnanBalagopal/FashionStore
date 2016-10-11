@@ -1,5 +1,6 @@
 package com.fashion.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,8 +15,13 @@ import org.springframework.stereotype.Component;
 
 @Entity
 @Component
-public class Supplier
+public class Supplier implements Serializable
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3725512670804724194L;
+
 	@Id
 	@GeneratedValue
 	private int id;

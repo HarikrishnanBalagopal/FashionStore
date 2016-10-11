@@ -14,6 +14,7 @@
 	<webflow:flow-registry id="flowRegistry"
 		flow-builder-services="flowBuilderServices" base-path="/WEB-INF">
 		<webflow:flow-location id="Registration" path="/RegistrationFlow.xml" />
+		<webflow:flow-location id="CheckOut" path="/CheckOutFlow.xml" />
 	</webflow:flow-registry>
 	<webflow:flow-executor id="flowExecutor" />
 

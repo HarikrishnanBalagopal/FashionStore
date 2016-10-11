@@ -13,6 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.stereotype.Component;
 
@@ -34,7 +36,8 @@ public class User implements Serializable
 
 	@NotBlank(message = "Role cannot be blank")
 	private String role;
-
+	private boolean enabled = true;
+	
 	@Column(name = "first_name")
 	@NotBlank(message = "First Name cannot be blank")
 	private String firstName;
@@ -56,9 +59,11 @@ public class User implements Serializable
 	private Address billingAddress = new Address();
 
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<CardDetails> cardDetails = new ArrayList<CardDetails>();
 
-	@OneToMany(mappedBy = "user", orphanRemoval=true, cascade = CascadeType.ALL, fetch=FetchType.EAGER)
+	@OneToMany(mappedBy = "user", orphanRemoval=true, cascade = CascadeType.ALL)
+	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<Order> orders = new ArrayList<Order>();
 
 	public List<Order> getOrders()
@@ -159,5 +164,15 @@ public class User implements Serializable
 	public void setCardDetails(List<CardDetails> cardDetails)
 	{
 		this.cardDetails = cardDetails;
+	}
+
+	public boolean isEnabled()
+	{
+		return enabled;
+	}
+
+	public void setEnabled(boolean enabled)
+	{
+		this.enabled = enabled;
 	}
 }

@@ -1,5 +1,6 @@
 package com.fashion.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,8 +14,13 @@ import org.springframework.stereotype.Component;
 
 @Entity
 @Component
-public class Category
+public class Category implements Serializable
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4135923706418076226L;
+
 	@Id
 	@NotBlank(message = "Category ID cannot be blank")
 	private String id;

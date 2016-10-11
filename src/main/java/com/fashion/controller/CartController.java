@@ -50,11 +50,12 @@ public class CartController
 		{
 			log.info("Email:" + email);
 			User user = userDAO.get(email);
-			order.setUser(user);
-			order.setProduct(productDAO.get(id));
-			order.setQuantity(1);
-			order.setStatus("PENDING");
-			user.getOrders().add(order);
+			Order o = new Order();
+			o.setUser(user);
+			o.setProduct(productDAO.get(id));
+			o.setQuantity(1);
+			o.setStatus("PENDING");
+			user.getOrders().add(o);
 			userDAO.update(user);
 			log.debug("MethodEnd: addToCart-Cart");
 
@@ -117,15 +118,21 @@ public class CartController
 			log.info("Email:" + email);
 			BigDecimal total = new BigDecimal(0);
 			List<Order> orderList = userDAO.get(email).getOrders();
+			List<Order> orderList2 = new ArrayList<Order>();
 			List<Product> productList = new ArrayList<Product>();
 			for(Order o : orderList)
 			{
-				productList.add(o.getProduct());
-				total = total.add(o.getProduct().getPrice().multiply(new BigDecimal(o.getQuantity())));
+				if(o.getStatus().equals("PENDING"))
+				{
+					log.info("Adding order to Cart:" + o);
+					orderList2.add(o);
+					productList.add(o.getProduct());
+					total = total.add(o.getProduct().getPrice().multiply(new BigDecimal(o.getQuantity())));
+				}
 			}
-			model.addAttribute("orderList", orderList);
-			model.addAttribute("productList", productList);
-			model.addAttribute("total", total);
+			session.setAttribute("orderList", orderList2);
+			session.setAttribute("productList", productList);
+			session.setAttribute("total", total);
 			log.debug("MethodEnd: cart-Cart");
 
 			return "user/Cart";
