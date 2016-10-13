@@ -5799,7 +5799,17 @@ a.btn.primary-btn.customBtn:hover{
 {
 	    background: url("/FashionStore/resources/images/admin-home/add-product-bg.jpg") center no-repeat;
 }
-
+textarea#description {
+    height: 160px;
+}
+input#custSearchBar {
+    width: 200px;
+    line-height: 32px;
+    border: 1px solid #a9a9a9;
+    font-size: 16px;
+    font-family: 'Oxygen',sans-serif;
+    padding: 0px 0 0 10px;
+}
 #addCategory
 {
 	    background: url("/FashionStore/resources/images/admin-home/add-category-bg.png") center no-repeat;

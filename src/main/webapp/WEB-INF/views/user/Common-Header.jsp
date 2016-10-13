@@ -9,6 +9,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>BigBag Store</title>
+<script type="text/javascript"
+	src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script>
 <script src="https://use.fontawesome.com/20c7f48529.js"></script>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -17,7 +19,6 @@
 <link rel="stylesheet" type="text/css" href="resources/css/style.css">
 </head>
 <body>
-
 	<!-- HEADER -->
 	<div class="header clearfix">
 
@@ -37,27 +38,16 @@
 					<div class="col-md-6 col-xs-12">
 						<ul class="list-inline pull-right">
 							<c:choose>
-								<c:when test="${empty isLoggedIn}">
+								<c:when test="${empty pageContext.request.userPrincipal}">
 									<li><span><a href="Login">Log in</a> <small>or</small>
 											<a href="Registration.obj">Create an account</a></span></li>
 								</c:when>
 								<c:otherwise>
-									<li><a href="AccountHome">Welcome ${email} |</a> <sec:authorize
+									<li><a href="AccountHome">Welcome
+											${pageContext.request.userPrincipal.name} |</a> <sec:authorize
 											access="hasAnyRole('ROLE_ADMIN', 'ROLE_USER')">
-											<!-- For login user -->
-											<c:url value="/j_spring_security_logout" var="logoutUrl" />
-											<form action="${logoutUrl}" method="post" id="logoutForm">
-												<input type="hidden" name="${_csrf.parameterName}"
-													value="${_csrf.token}" />
-											</form>
-											<script>
-												function formSubmit() {
-													document.getElementById(
-															"logoutForm")
-															.submit();
-												}
-											</script><a href="javascript:formSubmit()"> Logout</a>
-											</sec:authorize></li>
+											<a href="javascript:formSubmit()"> Logout</a>
+										</sec:authorize></li>
 								</c:otherwise>
 							</c:choose>
 							<li class="dropdown searchBox"><a href="#"
@@ -76,7 +66,7 @@
 									<li>Item(s) in your cart</li>
 									<c:forEach items="${orderList}" var="order" varStatus="status">
 										<li><a href="#">
-												<div class="media">
+												<div class="cartImage media">
 													<img class="media-left media-object"
 														src="resources/images/products/${productList[status.index].id}.jpg"
 														alt="cart-Image">
@@ -104,6 +94,20 @@
 			</div>
 		</div>
 	</div>
+
+	<sec:authorize access="hasAnyRole('ROLE_ADMIN', 'ROLE_USER')">
+		<!-- For login user -->
+		<c:url value="/j_spring_security_logout" var="logoutUrl" />
+		<form action="${logoutUrl}" method="post" id="logoutForm">
+			<input type="hidden" name="${_csrf.parameterName}"
+				value="${_csrf.token}" />
+		</form>
+		<script>
+			function formSubmit() {
+				document.getElementById("logoutForm").submit();
+			}
+		</script>
+	</sec:authorize>
 
 	<nav class="navbar navbar-main navbar-default" role="navigation">
 	<div class="container">

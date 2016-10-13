@@ -1,6 +1,9 @@
 package com.fashion.controller;
 
+import java.math.BigDecimal;
 import java.security.Principal;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -13,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.fashion.dao.UserDAO;
+import com.fashion.model.Order;
+import com.fashion.model.Product;
 import com.fashion.model.User;
 
 @Controller
@@ -64,10 +69,29 @@ public class LoginController
 	}
 
 	@RequestMapping("/UserHome")
-	public String userHome()
+	public String userHome(ModelMap model)
 	{
-		if(session.getAttribute("isLoggedIn") != null)
+		String email = (String) session.getAttribute("email");
+		if(email != null)
+		{
+			User user = userDAO.get(email);
+			List<Order> orderList = user.getOrders();
+			List<Order> orderList2 = new ArrayList<Order>();
+			List<Product> productList = new ArrayList<Product>();
+			for(Order o : orderList)
+			{
+				if(!o.getStatus().equals("PENDING"))
+				{
+					orderList2.add(o);
+					productList.add(o.getProduct());
+				}
+			}
+			model.addAttribute("user", user);
+			model.addAttribute("orderList2", orderList2);
+			model.addAttribute("productList2", productList);
+
 			return "user/UserHome";
+		}
 
 		return "redirect:/Login";
 	}

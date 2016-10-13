@@ -52,7 +52,7 @@
 						Donec id elit non mi porta gravida at eget metus. Nullam id dolor
 						id nibh ultricies vehicula ut id elit.</p>
 					<p>
-						<a class="btn primary-btn customBtn" href="#" role="button">Browse
+						<a class="btn primary-btn customBtn" href="ProductGrid" role="button">Browse
 							gallery</a>
 					</p>
 				</div>
