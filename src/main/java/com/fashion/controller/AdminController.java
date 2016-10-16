@@ -1,8 +1,5 @@
 package com.fashion.controller;
 
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -28,11 +25,12 @@ import com.fashion.dao.SupplierDAO;
 import com.fashion.model.Category;
 import com.fashion.model.Product;
 import com.fashion.model.Supplier;
+import com.fashion.util.FileUtil;
 
 @Controller
 public class AdminController
 {
-	Logger log = LoggerFactory.getLogger(CartController.class);
+	Logger log = LoggerFactory.getLogger(AdminController.class);
 
 	@Autowired
 	HttpSession session;
@@ -52,11 +50,11 @@ public class AdminController
 		log.debug("MethodStart: adminHome");
 		if(session.getAttribute("isAdmin") != null)
 		{
-			log.debug("MethodEnd: adminHome");
+			log.debug("MethodEnd: adminHome-AdminHome");
 
 			return "admin/AdminHome";
 		}
-		log.debug("MethodEnd: adminHome");
+		log.debug("MethodEnd: adminHome-AccountHome");
 
 		return "redirect:/AccountHome";
 	}
@@ -76,16 +74,16 @@ public class AdminController
 		log.debug("MethodStart: accountHome");
 		if(session.getAttribute("isAdmin") != null)
 		{
-			log.debug("MethodEnd: accountHome");
+			log.debug("MethodEnd: accountHome-AdminHome");
 
 			return "redirect:/AdminHome";
 		}else if(session.getAttribute("isLoggedIn") != null)
 		{
-			log.debug("MethodEnd: accountHome");
+			log.debug("MethodEnd: accountHome-UserHome");
 
 			return "redirect:/UserHome";
 		}
-		log.debug("MethodEnd: accountHome");
+		log.debug("MethodEnd: accountHome-Login");
 
 		return "redirect:/Login";
 	}
@@ -126,21 +124,7 @@ public class AdminController
 		log.info("File name = " + product.getImage().getOriginalFilename());
 
 		if(!product.getImage().isEmpty())
-		{
-			try
-			{
-				File f = new File(path);
-				f.createNewFile();
-				byte[] bytes = product.getImage().getBytes();
-				BufferedOutputStream bs = new BufferedOutputStream(new FileOutputStream(f));
-				bs.write(bytes);
-				bs.close();
-				log.info("Image uploaded");
-			}catch(Exception e)
-			{
-				log.error("Exception occured while uploading image: " + e);
-			}
-		}
+			FileUtil.saveImage(product.getImage(), path);
 
 		productDAO.save(product);
 		log.debug("MethodEnd: addProductAttempt");
@@ -185,21 +169,7 @@ public class AdminController
 		log.info("File name = " + product.getImage().getOriginalFilename());
 
 		if(!product.getImage().isEmpty())
-		{
-			try
-			{
-				File f = new File(path);
-				f.createNewFile();
-				byte[] bytes = product.getImage().getBytes();
-				BufferedOutputStream bs = new BufferedOutputStream(new FileOutputStream(f));
-				bs.write(bytes);
-				bs.close();
-				log.info("Image uploaded");
-			}catch(Exception e)
-			{
-				log.error("Exception occured while uploading image: " + e);
-			}
-		}
+			FileUtil.saveImage(product.getImage(), path);
 
 		productDAO.update(product);
 		log.debug("MethodEnd: editProductAttempt");
@@ -286,9 +256,12 @@ public class AdminController
 			modelView = new ModelAndView("admin/AdminHome");
 			modelView.addObject("isAdminAddCategoryClicked", true);
 			modelView.addObject("category", new Category());
+			log.debug("MethodEnd: addCategory-AdminHome");
 		}else
+		{
 			modelView = new ModelAndView("../../index");
-		log.debug("MethodEnd: addCategory");
+			log.debug("MethodEnd: addCategory-Index");
+		}
 
 		return modelView;
 	}
@@ -373,9 +346,12 @@ public class AdminController
 			modelView.addObject("isAdminViewSuppliersClicked", true);
 			modelView.addObject("supplierList", supplierDAO.list(s));
 			modelView.addObject("sortOrder", s);
+			log.debug("MethodEnd: adminSupplierList-AdminHome");
 		}else
+		{
 			modelView = new ModelAndView("../../index");
-		log.debug("MethodEnd: adminSupplierList");
+			log.debug("MethodEnd: adminSupplierList-Index");
+		}
 
 		return modelView;
 	}
@@ -393,9 +369,12 @@ public class AdminController
 			modelView.addObject("isAdminViewCategoriesClicked", true);
 			modelView.addObject("categoryList", categoryDAO.list(s));
 			modelView.addObject("sortOrder", s);
+			log.debug("MethodEnd: adminCategoryList-AdminHome");
 		}else
+		{
 			modelView = new ModelAndView("../../index");
-		log.debug("MethodEnd: adminCategoryList");
+			log.debug("MethodEnd: adminCategoryList-Index");
+		}
 
 		return modelView;
 	}

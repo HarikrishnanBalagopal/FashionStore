@@ -5792,6 +5792,19 @@ a.btn.primary-btn.customBtn
 {
 	color: white;
 }
+.quick-drop .sbSelector:link, .quick-drop .sbSelector:visited, .quick-drop .sbSelector:hover {
+    color: #797979!important;
+}
+.quick-drop .sbSelector {
+    font-family: 'Oxygen',sans-serif;
+    font-size: 15px;
+    line-height: 36px;
+    text-indent: 18px;
+}
+.quick-drop .sbHolder, .quick-drop .sbSelector {
+    width: 174px!important;
+    height: 39px!important;
+}
 a.btn.primary-btn.customBtn:hover{
     background: #47bac1;
 }

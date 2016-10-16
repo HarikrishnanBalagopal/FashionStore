@@ -79,13 +79,13 @@
 				</div>
 			</div>
 			<div class="col-sm-4 col-xs-12">
-				<div class="thumbnail" onclick="location.href='SingleProduct';">
+				<div class="thumbnail" onclick="location.href='ProductGrid?category=cat3';">
 					<div class="imageWrapper">
 						<img
 							src="resources/images/home/featured-collection/featured-collection-01.jpg"
 							alt="feature-collection-image">
 						<div class="masking">
-							<a href="ProductGrid" class="btn viewBtn">View Products</a>
+							<a href="ProductGrid?category=cat3" class="btn viewBtn">View Products</a>
 						</div>
 					</div>
 					<div class="caption">
@@ -94,13 +94,13 @@
 				</div>
 			</div>
 			<div class="col-sm-4 col-xs-12">
-				<div class="thumbnail" onclick="location.href='SingleProduct';">
+				<div class="thumbnail" onclick="location.href='ProductGrid?category=cat2';">
 					<div class="imageWrapper">
 						<img
 							src="resources/images/home/featured-collection/featured-collection-02.jpg"
 							alt="feature-collection-image">
 						<div class="masking">
-							<a href="ProductGrid" class="btn viewBtn">View Products</a>
+							<a href="ProductGrid?category=cat2" class="btn viewBtn">View Products</a>
 						</div>
 					</div>
 					<div class="caption">
@@ -109,13 +109,13 @@
 				</div>
 			</div>
 			<div class="col-sm-4 col-xs-12">
-				<div class="thumbnail" onclick="location.href='SingleProduct';">
+				<div class="thumbnail" onclick="location.href='ProductGrid?category=cat2';">
 					<div class="imageWrapper">
 						<img
 							src="resources/images/home/featured-collection/featured-collection-03.jpg"
 							alt="feature-collection-image">
 						<div class="masking">
-							<a href="ProductGrid" class="btn viewBtn">View Products</a>
+							<a href="ProductGrid?category=cat2" class="btn viewBtn">View Products</a>
 						</div>
 					</div>
 					<div class="caption">

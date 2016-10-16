@@ -43,7 +43,7 @@
 									</div>
 								</c:forEach>
 							</div>
-							<div class="col-xs-12 form-group">
+							<div class="col-xs-6 form-group">
 								<form:label path="password">Password *</form:label>
 								<form:input path="password" type="password" class="form-control"
 									name="password"
@@ -51,6 +51,7 @@
 									title="Password must be atleast 8 characters and must include letters and numbers"
 									pattern="^(?=[^a-z]*[a-z])(?=[^\d]*\d).{8,}$"
 									required="required" />
+								<span id="regexCheck">Password cannot be empty</span>
 								<c:forEach
 									items="${flowRequestContext.messageContext.getMessagesBySource('password')}"
 									var="err">
@@ -59,6 +60,15 @@
 									</div>
 								</c:forEach>
 							</div>
+							<div class="col-xs-6 form-group">
+								<label for="confirmPassword">Confirm Password *</label> <input
+									id="confirmPassword" type="password" class="form-control"
+									name="confirmPassword" placeholder="Retype Password"
+									title="Password must be atleast 8 characters and must include letters and numbers"
+									pattern="^(?=[^a-z]*[a-z])(?=[^\d]*\d).{8,}$"
+									required="required" /> <i id="passCheck" class="fa fa-times"></i>
+							</div>
+							<div class="clearfix"></div>
 							<div class="col-md-6 col-xs-12 form-group">
 								<form:label path="firstName">First Name *</form:label>
 								<form:input path="firstName" type="text" class="form-control"
@@ -219,10 +229,10 @@
 									<br />
 									<form:select path="cardDetails[0].expiryYear"
 										class="sbSelector" name="expiryYear" required="required">
-										<form:option value="1">2016</form:option>
-										<form:option value="2">2017</form:option>
-										<form:option value="3">2018</form:option>
-										<form:option value="4">2019</form:option>
+										<form:option value="2016">2016</form:option>
+										<form:option value="2017">2017</form:option>
+										<form:option value="2018">2018</form:option>
+										<form:option value="2019">2019</form:option>
 									</form:select>
 								</div>
 							</div>
@@ -244,5 +254,44 @@
 <script type="text/javascript">
 	var elem = document.getElementById("LinkRegister");
 	elem.className += " active";
+
+	var p1 = document.getElementById("password");
+	var p2 = document.getElementById("confirmPassword");
+	var icon = document.getElementById("passCheck");
+	var regexCheck = document.getElementById("regexCheck");
+	var form = document.getElementById("user");
+	p1.addEventListener("keyup", valid);
+	p1.addEventListener("keyup", regexValid);
+	p2.addEventListener("keyup", valid);
+	form.addEventListener("submit", check);
+
+	function check(e) {
+		if (p1.value != p2.value) {
+			alert("Passwords don't match");
+			e.preventDefault();
+		}
+	}
+	function regexValid() {
+		if (p1.value == "") {
+			regexCheck.innerHTML = "Password cannot be empty";
+		} else if (!/[a-zA-Z]/.test(p1.value)) {
+			regexCheck.innerHTML = "Password must contain letters";
+		} else if (!/[0-9]/.test(p1.value)) {
+			regexCheck.innerHTML = "Password must contain numbers";
+		} else if (!/.{8,}/.test(p1.value)) {
+			regexCheck.innerHTML = "Password must be atleast 8 characeters long";
+		} else {
+			regexCheck.innerHTML = "Password is Valid";
+		}
+	}
+	function valid() {
+		if (p1.value != "" && p1.value == p2.value) {
+			icon.classList.remove("fa-times");
+			icon.classList.add("fa-check");
+		} else {
+			icon.classList.remove("fa-check");
+			icon.classList.add("fa-times");
+		}
+	}
 </script>
 <%@ include file="Common-Footer.jsp"%>

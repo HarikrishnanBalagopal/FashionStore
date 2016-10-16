@@ -19,8 +19,9 @@
 </section>
 
 <!-- MAIN CONTENT SECTION -->
+<div data-ng-app="storeApp" data-ng-controller="productCtrl">
 <section class="mainContent clearfix productsContent">
-	<div data-ng-app="storeApp" class="container">
+	<div class="container">
 		<div class="row">
 			<div class="col-md-3 col-sm-4 col-xs-12 sideBar">
 				<div class="panel panel-default">
@@ -89,8 +90,7 @@
 					</div>
 				</div>
 			</div>
-			<div data-ng-controller="productCtrl"
-				class="col-md-9 col-sm-8 col-xs-12">
+			<div class="col-md-9 col-sm-8 col-xs-12">
 				<div class="row filterArea">
 					<div class="col-xs-3">
 						<select name="sortOrder" id="sortOrder"
@@ -119,14 +119,56 @@
 				</div>
 				<div class="row">
 					<div data-ng-repeat="p in products | searchFilter:searchText">
-						<div data-product-grid-element data-product="p"></div>
+						<div data-product-grid-element data-product="p" data-change="quickView(id)"></div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </section>
+<!-- PRODUCT QUICK VIEW MODAL -->
+    <div class="modal fade quick-view" tabindex="-1" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-body">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <div class="media">
+              <div class="media-left">
+                <img class="media-object" data-ng-src="resources/images/products/{{currProduct.id}}.jpg" alt="Image">
+              </div>
+              <div class="media-body">
+                <h2>{{currProduct.name}}</h2>
+                <h3>$ {{currProduct.price}}</h3>
+                <p>{{currProduct.description}}</p>
+                <span class="quick-drop">
+                  <select name="guest_id3" id="guest_id3" class="select-drop sbSelector">
+                    <option value="0">Size</option>
+                    <option value="1">Size 1</option>
+                    <option value="2">Size 2</option>
+                    <option value="3">Size 3</option>            
+                  </select>
+                </span>
+                <span class="quick-drop resizeWidth">
+                  <select name="guest_id4" id="guest_id4" class="select-drop sbSelector">
+                    <option value="0">Qty</option>
+                    <option value="1">Qty 1</option>
+                    <option value="2">Qty 2</option>
+                    <option value="3">Qty 3</option>            
+                  </select>
+                </span>
+                <div class="btn-area">
+                  <a href="AddToCart?id={{currProduct.id}}" class="btn btn-primary btn-block">Add to cart <i class="fa fa-angle-right" aria-hidden="true"></i></a> 
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
 <script>
+var elem = document.getElementById("LinkProduct");
+elem.className += " active";
 	var e = document.querySelector("#sortOrder");
 	e.value = ${sortOrder};
 	e.addEventListener("change", function() {
@@ -139,6 +181,19 @@ app.controller('productCtrl', function($scope) {
 	   					{id:"${product.id}", name:"${product.name}", description:"${product.description}", price:${product.price}, quantity:${product.quantity}},
 	   					</c:forEach>
 	    ];
+	    $scope.quickView = function(id)
+	    {
+	    	for(var i = 0; i < $scope.products.length; i++)
+	    	{
+	    		var p = $scope.products[i];
+	    		if(p.id == id)
+	    		{
+	    			$scope.currProduct = p;
+	    			break;
+	    		}
+	    	}
+	    };
+	    $scope.currProduct = $scope.products[0];
 	});
 app.filter('searchFilter', function() {
 		  return function(productList, searchText) {
@@ -154,7 +209,7 @@ app.directive('productGridElement',
 	function(){
 		return {
 				restrict: 'A',
-				scope:{product: '='},
+				scope:{product: '=', change: '&'},
 				replace: true,
 				templateUrl: 'resources/templates/ProductGridTemplate.html'
 			   };});

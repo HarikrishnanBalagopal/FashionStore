@@ -126,6 +126,7 @@
 		<div class="collapse navbar-collapse navbar-ex1-collapse">
 			<ul class="nav navbar-nav navbar-right">
 				<li id="LinkHome"><a href="Home">Home</a></li>
+				<li id="LinkProduct"><a href="ProductGrid">Products</a></li>
 				<li id="LinkRegister"><a href="Registration.obj">Register</a></li>
 				<li id="LinkLogin"><a href="Login">Login</a></li>
 				<li id="LinkAboutUs"><a href="AboutUs">About Us</a></li>

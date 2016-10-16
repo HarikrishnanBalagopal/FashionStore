@@ -1,7 +1,7 @@
 <div class="col-sm-4 col-xs-12">
 	<div class="productBox">
 		<div class="productImage clearfix">
-			<img src="resources/images/products/{{product.id}}.jpg"
+			<img ng-src="resources/images/products/{{product.id}}.jpg"
 				alt="products-img">
 			<div class="productMasking">
 				<ul class="list-inline btn-group" role="group">
@@ -10,7 +10,7 @@
 					<li><a href="AddToCart?id={{product.id}}"
 						class="btn btn-default"><i class="fa fa-shopping-cart"></i></a></li>
 					<li><a class="btn btn-default" data-toggle="modal"
-						href=".quick-view"><i class="fa fa-eye"></i></a></li>
+						data-ng-click="change({id: product.id})" href=".quick-view"><i class="fa fa-eye"></i></a></li>
 				</ul>
 			</div>
 		</div>
