@@ -101,7 +101,7 @@
 						</select>
 					</div>
 					<div class="col-xs-3">
-						<input id="custSearchBar" ng-model="searchText"
+						<input id="custSearchBar" data-ng-model="searchText"
 							placeholder="Search..." autofocus="autofocus" type="search" />
 					</div>
 					<div class="col-xs-6">
@@ -127,7 +127,7 @@
 	</div>
 </section>
 <!-- PRODUCT QUICK VIEW MODAL -->
-    <div class="modal fade quick-view" tabindex="-1" role="dialog">
+    <div id="productModal" class="modal fade quick-view" tabindex="-1" role="dialog">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-body">
@@ -200,8 +200,10 @@ app.filter('searchFilter', function() {
 			    if(!searchText) {
 			      return productList;
 			    }
+			    searchText = searchText.toLowerCase();
 			    return productList.filter(function(el) {
-			      return el.name.indexOf(searchText)>-1;
+			    	var str = el.name.toLowerCase();
+			      return str.indexOf(searchText)>-1;
 			    });
 			  }
 			});

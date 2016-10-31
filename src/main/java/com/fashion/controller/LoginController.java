@@ -57,7 +57,7 @@ public class LoginController
 		{
 			if(user.getRole().equals("ROLE_USER"))
 			{
-				modelView = new ModelAndView("user/UserHome");
+				modelView = new ModelAndView("redirect:/UserHome");
 				session.setAttribute("isLoggedIn", true);
 				session.setAttribute("email", user.getEmail());
 				log.debug("MethodEnd: loginAttempt-UserHome");

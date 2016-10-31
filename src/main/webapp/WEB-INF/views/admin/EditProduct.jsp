@@ -7,36 +7,48 @@
 					<div class="panel-heading">
 						<h3>product details</h3>
 					</div>
-					<div class="panel-body">
+					<div class="stepsPage panel-body">
 						<form:form action="EditProductAttempt" method="POST"
 							modelAttribute="product" enctype="multipart/form-data"
 							role="form">
-							<div class="form-group">
+							<div class="col-md-6 col-xs-12 form-group">
 								<form:label path="id">Product ID *</form:label>
 								<form:input path="id" type="text" class="form-control"
 									autofocus="autofocus" required="required" />
+							</div>
+							<div class="col-md-6 col-xs-12 form-group">
 								<form:label path="name">Product Name *</form:label>
 								<form:input path="name" type="text" class="form-control"
 									required="required" />
 							</div>
-							<form:radiobuttons path="category.id" items="${categoryList}"
-								required="required" />
-							<div class="form-group">
-								<form:label path="description">Description</form:label>
-								<form:textarea rows="20" cols="40" path="description" class="form-control" />
+							<div class="col-xs-2 form-group">
+								<form:label path="category.id">Category *</form:label>
+								<form:radiobuttons path="category.id" items="${categoryList}"
+									required="required" />
 							</div>
-							<div class="form-group">
+							<div class="col-md-10 col-xs-12 form-group">
+								<form:label path="description">Description</form:label>
+								<form:textarea rows="20" cols="40" path="description"
+									class="form-control" />
+							</div>
+							<div class="col-md-5 col-xs-12 form-group">
 								<form:label path="price">Price *</form:label>
 								<form:input path="price" type="text" class="form-control"
 									required="" />
 							</div>
-							<form:label path="quantity">Quantity *</form:label>
-							<form:input path="quantity" type="text" class="form-control"
-								required="required" />
-							<form:select path="supplier.id" items="${supplierList}" />
-
-							<form:label path="image">Image</form:label>
-							<form:input type="file" path="image" />
+							<div class="col-md-5 col-xs-12 form-group">
+								<form:label path="quantity">Quantity *</form:label>
+								<form:input path="quantity" type="text" class="form-control"
+									required="required" />
+							</div>
+							<div class="col-xs-5 filterArea form-group">
+								<form:label path="supplier.id">Supplier *</form:label>
+								<form:select class="sbSelector" path="supplier.id" items="${supplierList}" />
+							</div>
+							<div class="col-xs-5 form-group">
+								<form:label path="image">Image</form:label>
+								<form:input type="file" path="image" />
+							</div>
 							
 							* <small>Required Fields</small>
 

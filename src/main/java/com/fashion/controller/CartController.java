@@ -135,9 +135,26 @@ public class CartController
 			session.setAttribute("total", total);
 			log.debug("MethodEnd: cart-Cart");
 
-			return "user/Cart";
+			return "user/Cart2";
 		}
 		log.debug("MethodEnd: cart-Login");
+
+		return "redirect:/Login";
+	}
+	
+	@RequestMapping("/Cart2")
+	public String cart2(ModelMap model)
+	{
+		log.debug("MethodStart: cart2");
+		String email = (String) session.getAttribute("email");
+		if(email != null)
+		{
+			log.info("Email:" + email);
+			log.debug("MethodEnd: cart2-Cart2");
+
+			return "user/Cart2";
+		}
+		log.debug("MethodEnd: cart2-Login");
 
 		return "redirect:/Login";
 	}

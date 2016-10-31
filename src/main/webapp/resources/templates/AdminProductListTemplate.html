@@ -2,17 +2,18 @@
 	<div class="media">
 		<div class="media-left">
 			<img class="media-object"
-				src="resources/images/products/{{product.id}}.jpg" alt="Image">
+				data-ng-src="resources/images/products/{{product.id}}.jpg" alt="Image">
 			<span class="maskingImage"><a data-toggle="modal"
-				href=".quick-view" class="btn viewBtn">Quick View</a></span>
+				 data-ng-click="change({id: product.id})"
+				data-target="#productModal" class="btn viewBtn">Quick View</a></span>
 		</div>
 		<div class="media-body">
 			<div class="col-xs-10 content-wrap">
 				<h4 class="media-heading">
-					<a href="SingleProduct">{{product.name}}</a>
+					<a href="SingleProduct">{{product.name}} ID: {{product.id}}</a>
 				</h4>
 				<p>{{product.description}}</p>
-				<h3>${{product.price}}</h3>
+				<h3>$ {{product.price}}</h3>
 				<ul class="list-inline">
 					<li><h4>Category:{{product.category_name}}</h4></li>
 					<li><h4>Supplier:{{product.supplier_name}}</h4></li>
@@ -20,11 +21,11 @@
 
 				<div class="btn-group" role="group">
 					<button type="button" class="btn btn-default"
-						onclick="location.href='/FashionStore/EditProduct?id={{product.id}}';">
+						data-ng-click="editProduct()">
 						<i class="fa fa-pencil" aria-hidden="true"></i>
 					</button>
 					<button type="button" class="btn btn-default"
-						onclick="location.href='/FashionStore/DeleteProductAttempt?id={{product.id}}';">
+						data-ng-click="deleteProduct()">
 						<i class="fa fa-times" aria-hidden="true"></i>
 					</button>
 				</div>

@@ -30,22 +30,22 @@
 								<form:label path="description">Description</form:label>
 								<form:textarea path="description" class="form-control" />
 							</div>
-							<div class="col-md-6 col-xs-12 form-group">
+							<div class="col-md-5 col-xs-12 form-group">
 								<form:label path="price">Price *</form:label>
 								<form:input path="price" type="text" class="form-control"
 									required="" />
 							</div>
-							<div class="col-md-6 col-xs-12 form-group">
+							<div class="col-md-5 col-xs-12 form-group">
 								<form:label path="quantity">Quantity *</form:label>
 								<form:input path="quantity" type="text" class="form-control"
 									required="required" />
 							</div>
-							<div class="col-xs-6 filterArea form-group">
+							<div class="col-xs-5 filterArea form-group">
 								<form:label path="supplier.id">Supplier *</form:label>
 								<form:select class="sbSelector" path="supplier.id"
 									items="${supplierList}" />
 							</div>
-							<div class="col-xs-6 form-group">
+							<div class="col-xs-5 form-group">
 								<form:label path="image">Image</form:label>
 								<form:input type="file" path="image" />
 							</div>

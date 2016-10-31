@@ -21,6 +21,9 @@
 <section class="mainContent logIn">
 	<div class="container">
 		<div class="row">
+			<c:if test="${invalidCredentials == true}">
+				<%@ include file="InvalidCredentials.jsp"%>
+			</c:if>
 			<div
 				class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-12">
 				<div class="panel panel-default">
@@ -56,9 +59,6 @@
 		</div>
 	</div>
 </section>
-<c:if test="${invalidCredentials == true}">
-	<%@ include file="InvalidCredentials.jsp"%>
-</c:if>
 <script type="text/javascript">
 	var elem = document.getElementById("LinkLogin");
 	elem.className += " active";

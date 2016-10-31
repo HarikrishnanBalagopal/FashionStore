@@ -31,14 +31,14 @@ public class DefaultController
 		log.debug("MethodEnd: DefaultController");
 	}
 
-	@RequestMapping("/Home")
+	@RequestMapping(value={"/", "/Home"})
 	public String home()
 	{
 		log.debug("MethodStart: home");
 		session.setAttribute("cityList", cityList);
 		log.debug("MethodEnd: home");
 
-		return "../../index";
+		return "index";
 	}
 
 	@RequestMapping("/AboutUs")

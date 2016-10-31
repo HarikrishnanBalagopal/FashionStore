@@ -1,4 +1,4 @@
-<%@ include file="WEB-INF/views/user/Common-Header.jsp"%>
+<%@ include file="user/Common-Header.jsp"%>
 <!-- Carousel
 ================================================== -->
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -130,4 +130,4 @@
 	var elem = document.getElementById("LinkHome");
 	elem.className += " active";
 </script>
-<%@ include file="WEB-INF/views/user/Common-Footer.jsp"%>
+<%@ include file="user/Common-Footer.jsp"%>
